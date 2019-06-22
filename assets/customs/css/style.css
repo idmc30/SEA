@@ -1,0 +1,92 @@
+.titulocontrol{
+  text-align: center; 
+  background-color: #ffffff26; 
+  font-family:"Roboto", sans-serif;
+}
+.tablamtmsaccion{
+  text-align: center; 
+  color: #01579b;
+}
+.cardmtmheader{
+  color: white; 
+  background: #ff9100c9;"
+}
+.tabmtmheader{
+  background: #01579b; 
+  color:#f3f4f7; 
+  text-align: center;  
+}
+.ctrlasistencia{
+  text-align: center;
+  font-size: 25px;
+  color: #013055;
+}
+.hrdivision{
+  border-top: 3px solid #ff9100c9;
+}
+.titulologin{
+  color: #AA0000; 
+  font-size: 40px; 
+  vertical-align: middle;
+}
+.tituloprincipal{
+  color: #aa0000;
+}
+.error {
+    border: 2px solid networking;
+    border-color: red;
+    color: red;
+}
+.btn-export {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+.btn-export:hover {
+  color: #ff9100c9;
+  background-color: #01579b;
+  border-color: #01579b;
+  -webkit-transform:scale(1.1);transform:scale(1.1);
+}
+.titulovent{
+  text-align:right; 
+  font-size: 30px;
+}
+.itemactiv{
+  text-align: right;
+  font-size: 15px
+}
+.text-mutedsea, 
+.preview-listsea 
+.preview-itemsea 
+.preview-item-contentsea p 
+.content-categorysea, 
+.email-wrappersea
+.mail-sidebarsea
+.menu-barsea
+.profile-list-itemsea a 
+.usersea 
+.u-designationsea, 
+.email-wrappersea
+.mail-list-containersea
+.mail-listsea
+.contentsea
+.message_textsea, 
+.email-wrappersea
+.mail-list-containersea
+.mail-listsea
+.detailssea
+.datesea {
+  color: #01579b !important;
+}
+.wrapdeteve{
+  margin-left: 0rem !important;
+}
+.pdeteve{
+  margin-top: 10px !important;
+  font-size: 15px;
+  text-align: right;
+}
+.text-diplo{
+  color: #01579b;
+}
