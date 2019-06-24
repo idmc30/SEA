@@ -17,17 +17,47 @@ class Usuario{
  */
 
  /**
-  * agragado el 21/06/2019 idmc
+  * agregado el 21/06/2019 idmc
+    modificado el 23/06/2019 idmc
   */
-public function listarUsuariosPerfil(){
-        
+
+  public function getUsuariosPerfil($idusuario){
+            
     $sentence=$this->objPdo->prepare("SELECT * FROM sea.usuario u 
-                                     INNER JOIN sea.persona p ON u.id_persona = p.id_persona
-                                     INNER JOIN sea.rol_usuario ru ON u.id_rol_usuario=ru.id_rol_usuario");
-    $sentence->execute();
+                                    INNER JOIN sea.persona p ON u.id_persona = p.id_persona
+                                    INNER JOIN sea.rol_usuario ru ON u.id_rol_usuario=ru.id_rol_usuario
+                                    WHERE u.id_usuario=:idusuario ");
+    $sentence->execute(array( 'idusuario'=>$idusuario  ));
     $resultado = $sentence->fetchAll(PDO::FETCH_OBJ);
-    return $resultado;
+    return $resultado[0];
 }
+  
+  public function insertUsuario($contrasena, $dni_usuario, $idpersona, $id_rol_usuario,$id_sesion_registro_aud){
+
+  
+    $sql="INSERT INTO sea.usuario(contrasena, estado_usuario, dni_usuario, modalidad_registro, id_persona, id_rol_usuario, id_sesion_registro_aud, fecha_registro_aud) VALUES (:contrasena, 'A', :dni_usuario, null, :idpersona, :id_rol_usuario, :id_sesion_registro_aud, NOW())";
+
+    $stmt = $this->objPdo->prepare($sql);
+    $stmt->execute(array(   'contrasena' =>$contrasena,
+                            'dni_usuario' =>$dni_usuario,
+                            'idpersona' =>$idpersona,
+                            'id_rol_usuario' =>$id_rol_usuario,
+                            'id_sesion_registro_aud' =>$id_sesion_registro_aud
+                    ));
+}
+
+
+    public function listarUsuariosPerfil(){
+            
+        $sentence=$this->objPdo->prepare("SELECT * FROM sea.usuario u 
+                                        INNER JOIN sea.persona p ON u.id_persona = p.id_persona
+                                        INNER JOIN sea.rol_usuario ru ON u.id_rol_usuario=ru.id_rol_usuario");
+        $sentence->execute();
+        $resultado = $sentence->fetchAll(PDO::FETCH_OBJ);
+        return $resultado;
+    }
+
+/**fin */
 
 
  public function listarUsuariosParaPonentes() {

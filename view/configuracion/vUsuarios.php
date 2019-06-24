@@ -33,8 +33,8 @@
             <div class="card">
               <div class="card-header cardmtmheader">REGISTRO DE USUARIO-PERFIL</div>
               <div class="card-body">
-                <div class="auth-form-transparent text-left p-3">              
-                  <form class="pt-3" id="frmRegistro" name="frmRegistro">
+                <div class="auth-form-transparent text-left ">              
+                  <form class="pt-3" id="frmNuevoUsuario" name="frmNuevoUsuario">
                   <div class="form-group row">
                    
                         <div class="col-lg-12">
@@ -56,9 +56,11 @@
                                 <i class="mdi mdi-account-card-details text-primary"></i>
                             </span>
                             </div>
-                            <!-- <input name="txtIdPersona" id="txtIdPersona" type="text" class="form-control" placeholder="ID Persona" value="0" hidden /> -->
-                            <input name="txtIdPersona" id="txtIdPersona" type="text" class="form-control" placeholder="ID Persona" value="0" hidden />
-                            <input id="txtDNI" name="txtDNI" type="text" class="form-control form-control-lg border-left-0" placeholder="DNI" maxlength="8" onkeypress="return soloNumeros(event)" autofocus="" value="" onblur="ValidarDNI(this.value)" tabindex="10">
+                    
+                            <input name="txtIdPersona" id="txtIdPersona" type="text"/>
+                            <input name="txtIdUsu" id="txtIdUsu" type="text"/>
+
+                            <input id="txtDNI" name="txtDNI" type="text" class="form-control form-control-lg border-left-0" placeholder="DNI" maxlength="8" onkeypress="return soloNumeros(event)" autofocus="" tabindex="10">
                         </div>
                         <label name="lblDni"></label>
                         </div>
@@ -192,7 +194,7 @@
   <script src="assets/customs/plugins/datatable/spanish_datatable.js"></script>
   <script>
     $('#tabladt').DataTable({
-        "bLengthChange": false,
+        "bLengthChange": true,
         "lengthMenu": [10],
         "language": spanish_datatable
     });

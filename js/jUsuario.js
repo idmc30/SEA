@@ -1,6 +1,83 @@
+function EditUsuario(idusu) {
+
+    getUsuarios(idusu);
+
+}
+var getUsuarios = function(idusu) {
+    var options = {
+        type: 'POST',
+        url: 'index.php?page=usuario&action=getUsuario',
+        data: {
+            'cod': idusu
+        },
+        dataType: 'json',
+        success: function(response) {
+
+
+            $("#txtIdPersona").val(response.codper);
+            $("#txtIdUsu").val(response.codusu);
+            $("#cmbRol").val(response.codperfil);
+            $("#txtDNI").val(response.dni);
+            $("#txtapepaterno").val(response.apepaterno);
+            $("#txtapematerno").val(response.apematerno);
+            $("#txtnombres").val(response.nombres);
+            $("#txtCorreo").val(response.correo);
+            $("#txtTelefono").val(response.telef);
+            $("#txtAnexo").val(response.anexo);
+
+
+
+            $("#txtContrasena").val(response.pass);
+
+
+
+
+
+
+
+        }
+    };
+    $.ajax(options);
+};
+
+
+
 $(document).ready(() => {
     listarUsuarios();
 });
+
+
+
+$(document).on('submit', '#frmNuevoUsuario', function(event) {
+    event.preventDefault();
+    /* Act on the event */
+    alert("asdas");
+    var formElement = document.getElementById("frmNuevoUsuario");
+    var formData = new FormData(formElement);
+
+    registrarUsuariosPerfil(formData);
+});
+
+var registrarUsuariosPerfil = function(formData) {
+    var options = {
+        type: 'POST',
+        url: 'index.php?page=usuario&action=registrarUsuarios',
+        data: formData,
+        processData: false, // tell jQuery not to process the data
+        contentType: false, // tell jQuery not to set contentType       
+        dataType: 'json',
+        success: function(response) {
+
+            swal({
+                title: response.msj,
+                icon: response.tipo,
+                allowOutsideClick: false,
+            })
+        }
+    };
+    $.ajax(options);
+};
+
 
 
 var listarUsuarios = function() {
@@ -16,7 +93,7 @@ var listarUsuarios = function() {
             $("#listadousuarios").html(response);
             //$('#tabladt').dataTable();
             $('#tabladt').DataTable({
-                "bLengthChange": false,
+                "bLengthChange": true,
                 "lengthMenu": [10],
                 "language": spanish_datatable
             });
@@ -26,3 +103,24 @@ var listarUsuarios = function() {
     };
     $.ajax(options);
 };
+
+$(document).ready(() => {
+    $("#frmNuevoUsuario").validate({
+        rules: {
+            cmbRol: 'required',
+            txtDNI: 'required',
+            txtapepaterno: 'required',
+            txtapematerno: 'required',
+            txtnombres: 'required',
+            txtContrasena: 'required'
+        },
+        messages: {
+            cmbRol: 'Debe seleccionar un perfil',
+            txtDNI: 'Ingrese su DNI',
+            txtapepaterno: 'Requerido',
+            txtapematerno: 'Requerido',
+            txtnombres: 'Requerido',
+            txtContrasena: 'Requerido',
+        }
+    });
+});
