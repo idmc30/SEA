@@ -19,8 +19,7 @@
             <td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo "<b>".$c.".".$d."</b>";?></td>
             <?php if ($submenu==$menu->referencia_menu): ?>
                 <?php $d=$d+1 ?> 
-                <?php $c=$c+1 ?>  
-                                                    
+                <?php $c=$c+1 ?>                                 
             <?php endif ?>
         
     <?php endif ?>

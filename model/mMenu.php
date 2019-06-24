@@ -15,6 +15,18 @@ class Menu{
 /**
  * idmc 13/06/2019 creando modelo de menu de navegacion
  */
+
+		public function listarMenuNavegacionAsignacion(){
+			// $sentence = $this->objPdo->prepare("SELECT*FROM sea.menu ORDER BY id_menu ASC");
+			$sentence = $this->objPdo->prepare("SELECT * FROM sea.menu m
+			WHERE estado_menu='A'	ORDER BY m.id_menu ASC	");
+			$sentence->execute();
+			$resultado = $sentence->fetchAll(PDO::FETCH_OBJ);
+			return $resultado;
+		}
+
+		
+
 		public function listarMenuNavegacion($idRol){
 			// $sentence = $this->objPdo->prepare("SELECT*FROM sea.menu ORDER BY id_menu ASC");
 			$sentence = $this->objPdo->prepare("SELECT * FROM sea.acceso a

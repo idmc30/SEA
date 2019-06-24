@@ -19,7 +19,9 @@ function _listarMenuAction(){
     $idPerfil= $_POST['codperfil'];
     $menu = new Menu();
     $acceso= new Acceso();
-    $lmenu = $menu->listarMenuNavegacion($idPerfil);
+    // $lmenu = $menu->listarMenuNavegacion($idPerfil);
+    $lmenu = $menu->listarMenuNavegacionAsignacion();
+
     
 	require 'view/configuracion/tabMenu.php';
 }
