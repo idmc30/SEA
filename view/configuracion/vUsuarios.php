@@ -57,8 +57,8 @@
                             </span>
                             </div>
                     
-                            <input name="txtIdPersona" id="txtIdPersona" type="text"/>
-                            <input name="txtIdUsu" id="txtIdUsu" type="text"/>
+                            <input name="txtIdPersona" id="txtIdPersona" type="hidden"/>
+                            <input name="txtIdUsu" id="txtIdUsu" type="hidden"/>
 
                             <input id="txtDNI" name="txtDNI" type="text" class="form-control form-control-lg border-left-0" placeholder="DNI" maxlength="8" onkeypress="return soloNumeros(event)" autofocus="" tabindex="10">
                         </div>
@@ -98,6 +98,22 @@
                             <input id="txtnombres" name="txtnombres" type="text" class="form-control form-control-lg border-left-0" placeholder="Nombres">
                         </div>
                         </div>
+                        <div class="form-group">
+                          <label>Sexo:</label>
+                          <div class="input-group">
+                          <div class="input-group-prepend bg-transparent">
+                            <span class="input-group-text bg-transparent border-right-0">
+                                <i class="mdi mdi-account-outline text-primary"></i>
+                            </span>
+                            </div>
+                            <select id="cmbsexo" name="cmbsexo" class="form-control">
+                                  <option value="0" selected="selected" disabled>Seleccionar</option>
+                                  <option value="M" selected="selected"> Masculino</option>
+                                  <option value="F" selected="selected" >Femenino</option>
+                                
+                                </select>
+                          </div>
+                        </div>
                         
                         <div class="form-group">
                         <label>Correo</label>
@@ -112,15 +128,15 @@
                         </div>
 
                         <div class="form-group">
-                        <label>Teléfono</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend bg-transparent">
-                            <span class="input-group-text bg-transparent border-right-0">
-                                <i class="mdi mdi-cellphone text-primary"></i>
-                            </span>
-                            </div>
-                            <input id="txtTelefono" name="txtTelefono" type="text" class="form-control form-control-lg border-left-0" placeholder="Teléfono" maxlength="9" onkeypress="return soloNumeros(event)" tabindex="30">
-                        </div>
+                          <label>Teléfono</label>
+                          <div class="input-group">
+                              <div class="input-group-prepend bg-transparent">
+                              <span class="input-group-text bg-transparent border-right-0">
+                                  <i class="mdi mdi-cellphone text-primary"></i>
+                              </span>
+                              </div>
+                              <input id="txtTelefono" name="txtTelefono" type="text" class="form-control form-control-lg border-left-0" placeholder="Teléfono" maxlength="9" onkeypress="return soloNumeros(event)" tabindex="30">
+                          </div>
                         </div>
 
                         <div class="form-group">
@@ -135,7 +151,7 @@
                         </div>
                         </div>
 
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                         <label>Contraseña</label>
                         <div class="input-group">
                             <div class="input-group-prepend bg-transparent">
@@ -145,10 +161,11 @@
                             </div>
                             <input id="txtContrasena" name="txtContrasena" type="password" class="form-control form-control-lg border-left-0" id="exampleInputPassword" placeholder="Contraseña" tabindex="40">                        
                         </div>
-                        </div>
+                        </div> -->
                     <br>
                     <div class="mt-3" style="text-align: center;">
-                      <button type="submit" class="btn btn-inverse-info btn-fw btn-lg font-weight-medium auth-form-btn">Registrarse</button>
+                      <!-- <button  type="submit" id="btnregistrarse" class="btn btn-inverse-info btn-fw btn-lg font-weight-medium auth-form-btn" value="Registrarse"></button> -->
+                      <input type="submit"  id="btnregistrarse" class="btn btn-inverse-info btn-fw btn-lg " value="Guardar">
                     </div>
                   </form>
                 </div>

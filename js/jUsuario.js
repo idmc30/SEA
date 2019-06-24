@@ -1,5 +1,8 @@
 function EditUsuario(idusu) {
 
+    // $("#txtDNI").prop("disabled", true);
+    // $("#txtDNI").prop("disabled", true);
+
     getUsuarios(idusu);
 
 }
@@ -14,9 +17,10 @@ var getUsuarios = function(idusu) {
         success: function(response) {
 
 
+
             $("#txtIdPersona").val(response.codper);
             $("#txtIdUsu").val(response.codusu);
-            $("#cmbRol").val(response.codperfil);
+            $("#cmbRol").val(response.codperfil).change();
             $("#txtDNI").val(response.dni);
             $("#txtapepaterno").val(response.apepaterno);
             $("#txtapematerno").val(response.apematerno);
@@ -24,13 +28,7 @@ var getUsuarios = function(idusu) {
             $("#txtCorreo").val(response.correo);
             $("#txtTelefono").val(response.telef);
             $("#txtAnexo").val(response.anexo);
-
-
-
-            $("#txtContrasena").val(response.pass);
-
-
-
+            $("#btnregistrarse").attr('value', 'Actualizar');
 
 
 
@@ -51,7 +49,7 @@ $(document).ready(() => {
 $(document).on('submit', '#frmNuevoUsuario', function(event) {
     event.preventDefault();
     /* Act on the event */
-    alert("asdas");
+
     var formElement = document.getElementById("frmNuevoUsuario");
     var formData = new FormData(formElement);
 

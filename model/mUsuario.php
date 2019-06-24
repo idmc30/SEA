@@ -21,16 +21,27 @@ class Usuario{
     modificado el 23/06/2019 idmc
   */
 
-  public function getUsuariosPerfil($idusuario){
-            
-    $sentence=$this->objPdo->prepare("SELECT * FROM sea.usuario u 
-                                    INNER JOIN sea.persona p ON u.id_persona = p.id_persona
-                                    INNER JOIN sea.rol_usuario ru ON u.id_rol_usuario=ru.id_rol_usuario
-                                    WHERE u.id_usuario=:idusuario ");
-    $sentence->execute(array( 'idusuario'=>$idusuario  ));
-    $resultado = $sentence->fetchAll(PDO::FETCH_OBJ);
-    return $resultado[0];
-}
+    public function updatetUsuario($idrolusuario,$idsesionupdateaud,$idusuario){
+
+        $sql="UPDATE sea.usuario SET id_rol_usuario=:idrolusuario, id_sesion_update_aud=:idsesionupdateaud, fecha_update_aud=NOW() WHERE id_usuario=:idusuario";
+
+        $stmt = $this->objPdo->prepare($sql);
+        $stmt->execute(array( 'idrolusuario' =>$idrolusuario,
+                              'idsesionupdateaud' =>$idsesionupdateaud,
+                              'idusuario'=>$idusuario
+                        ));
+    }
+
+    public function getUsuariosPerfil($idusuario){
+                
+        $sentence=$this->objPdo->prepare("SELECT * FROM sea.usuario u 
+                                        INNER JOIN sea.persona p ON u.id_persona = p.id_persona
+                                        INNER JOIN sea.rol_usuario ru ON u.id_rol_usuario=ru.id_rol_usuario
+                                        WHERE u.id_usuario=:idusuario ");
+        $sentence->execute(array( 'idusuario'=>$idusuario  ));
+        $resultado = $sentence->fetchAll(PDO::FETCH_OBJ);
+        return $resultado[0];
+    }
   
   public function insertUsuario($contrasena, $dni_usuario, $idpersona, $id_rol_usuario,$id_sesion_registro_aud){
 

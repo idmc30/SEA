@@ -217,14 +217,13 @@ var editarOrganizador = function(cod) {
         },
         dataType: 'json',
         success: function(response) {
-            console.log(response);
             $("#txtnombre").val(response.nombreOrganizador);
             $("#txttelefono").val(response.telefOrganizador);
             $("#txtanexo").val(response.anexoOrganizador);
             $("#codorganizador").val(response.idOrganizador);
             $("#cmbtipoorga").val(response.idTipoOrganizador).change();
             $("#btnorganizador").attr('value', 'Actualizar');
-            // Object { idOrganizador: 11, telefOrganizador: 265645, anexoOrganizador: 623263, nombreOrganizador: "fgfgfg", idTipoOrganizador: 2, nombreTipOrganizador: "AREA" }
+
         }
     };
     $.ajax(options);

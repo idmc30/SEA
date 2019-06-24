@@ -63,7 +63,12 @@ function _registrarUsuariosAction(){
     $correo=$_POST['txtCorreo'];
     $telefono=$_POST['txtTelefono'];
     $anexo=$_POST['txtAnexo'];
-    $contrasena=$_POST['txtContrasena'];
+    $contrasena='123456';
+    $codpersona=$_POST['txtIdPersona'];
+    $idusuario=$_POST['txtIdUsu'];
+    $sexo=$_POST['cmbsexo'];
+    
+    
 
 	$objPersona = new Persona();
     $objUsuario = new Usuario();
@@ -71,28 +76,40 @@ function _registrarUsuariosAction(){
 	$persona = $objPersona->consultarPersonaByDNI($dni);
     $usuario = $objUsuario->consultarUsuarioByID($persona);
     
-	if ($persona == NULL){
-		$objPersona->registrarPersonaManual($dni, $nombres, $apepaterno, $apematerno, $correo, $telefono, $anexo, $_SESSION['idsesion']);
-		if ($usuario == NULL) {
-			$idpersona = $objPersona->consultarPersonaByDNI($dni);
-			$objUsuario->insertUsuario($contrasena, $dni, $idpersona,$perfil ,$_SESSION['idsesion']);
-          
-            $response['msj']="Registrado satisfactoriamente";
-            $response['tipo']="success";
-		}
-		else
-		{
-            
-            $response['msj']="Usuario ya se encuentra registrado";
-            $response['tipo']="info";
-		}
-	}
-	else
-	{
+    if (!empty($codpersona) && !empty($idusuario)) {
         
-        $response['msj']="La persona ya se encuentra registrado";
-        $response['tipo']="info";
-	}
+       $updateUsuario=$objUsuario->updatetUsuario($perfil,$_SESSION['idsesion'],$idusuario);
+       $updatePersona=$objPersona->updatePersona($dni,$nombres,$apepaterno,$apematerno,$sexo,$correo,$telefono,$anexo,$_SESSION['idsesion'],$codpersona);
+       $response['msj']="Modificado satisfactoriamente";
+       $response['tipo']="success";
+    
+    } else 
+    {
+
+        if ($persona == NULL){
+            $objPersona->insertPersona($dni,$nombres,$apepaterno,$apematerno,$sexo,$correo,$telefono,$anexo,$_SESSION['idsesion']);
+            if ($usuario == NULL) {
+                $idpersona = $objPersona->consultarPersonaByDNI($dni);
+                $objUsuario->insertUsuario($contrasena, $dni, $idpersona,$perfil ,$_SESSION['idsesion']);
+              
+                $response['msj']="Registrado satisfactoriamente";
+                $response['tipo']="success";
+            }
+            else
+            {
+                
+                $response['msj']="Usuario ya se encuentra registrado";
+                $response['tipo']="info";
+            }
+        }
+        else
+        {
+            
+            $response['msj']="La persona ya se encuentra registrado";
+            $response['tipo']="info";
+        }
+    }
+
 
     header('Content-Type: application/json');
     echo json_encode($response);

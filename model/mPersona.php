@@ -9,7 +9,45 @@ class Persona{
 	function __construct(){
 		$this->objPdo = new Conexion(1);
     }
-    
+ 
+
+
+    public function insertPersona($dni_persona, $nombre_persona, $ape_paterno, $ape_materno,$sexo, $correo_persona, $telefono_persona, $anexo, $id_sesion_registro_aud){
+        $sql="INSERT INTO sea.persona(dni_persona, nombre_persona, ape_paterno, ape_materno, sexo, fech_nac, direccion_persona, correo_persona, telefono_persona, profesion_persona, foto_persona, estado_persona, id_tipo_persona, id_modalidad_contractual, id_sesion_registro_aud, fecha_registro_aud, id_sesion_update_aud, fecha_update_aud, anexo) VALUES (:dni_persona, :nombre_persona, :ape_paterno, :ape_materno, :sexo, NULL, NULL, :correo_persona, :telefono_persona, NULL, NULL, 'A', 1, NULL, :id_sesion_registro_aud, NOW(), NULL, NULL, :anexo)";
+        $sentence = $this->objPdo->prepare($sql);
+        $resultado=$sentence->execute(array(   'dni_persona' =>$dni_persona,
+                                'nombre_persona' =>$nombre_persona,
+                                'ape_paterno' =>$ape_paterno,
+                                'ape_materno' =>$ape_materno,
+                                'sexo' =>$sexo,
+                                'correo_persona' =>$correo_persona,
+                                'telefono_persona' =>$telefono_persona,
+                                'anexo' =>$anexo,
+                                'id_sesion_registro_aud' =>$id_sesion_registro_aud
+                        ));
+       return $resultado;                 
+    }
+
+    public function updatePersona($dni,$nombres,$apepaterno,$apematerno,$sexo,$correo,$telefono,$anexo,$idsessionupdate,$idpersona){
+        $sentence=$this->objPdo->prepare("UPDATE sea.persona  SET dni_persona=:dni, nombre_persona=:nombres, ape_paterno=:apepaterno, 
+            ape_materno=:apematerno, sexo=:sexo,correo_persona=:correo,telefono_persona=:telefono,anexo=:anexo, id_sesion_update_aud=:idsessionupdate, fecha_update_aud=NOW()
+      WHERE id_persona=:idpersona");
+        $sentence->execute(array(
+                                  'dni'=>$dni,
+                                  'nombres'=>$nombres,
+                                  'apepaterno'=>$apepaterno,
+                                  'apematerno'=>$apematerno,
+                                  'sexo'=>$sexo,
+                                  'correo'=>$correo,
+                                  'telefono'=>$telefono,
+                                  'anexo'=>$anexo,
+                                  'idsessionupdate'=>$idsessionupdate,
+                                  'idpersona'=>$idpersona
+                            ));
+        $resultado = $sentence->fetchAll(PDO::FETCH_OBJ);
+        return $resultado;
+    }
+
    
   public function eliminarPersona($id_sesion_update_aud,$fecha_update,$id_persona){
     $sentence=$this->objPdo->prepare(" UPDATE sea.persona SET estado_persona='I',id_sesion_update_aud=:id_sesion_update_aud, fecha_update_aud=:fecha_update    WHERE id_persona=:id_persona");
