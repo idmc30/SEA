@@ -23,7 +23,7 @@ function _listarMenuAction(){
     
 	require 'view/configuracion/tabMenu.php';
 }
-$retVal = (condition) ? a : b ;
+
 
 function _accesoAction(){
   
