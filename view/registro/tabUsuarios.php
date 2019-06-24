@@ -5,7 +5,6 @@
           <td class="tabmtmth"> <?php echo $usuario->dni_persona;  ?></td> 
           <td class="tabmtmth"> <?php echo $usuario->ape_paterno.' '.$usuario->ape_materno.' '.$usuario->nombre_persona;  ?>
           </td>   
-          <td class="tabmtmth"> <?php echo $usuario->nombre_rol_usuario ?>
           </td>                     
           <td style="text-align: center;">
           	<?php if ($usuario->estado_usuario == 'A') { ?>
