@@ -108,8 +108,8 @@
                             </div>
                             <select id="cmbsexo" name="cmbsexo" class="form-control">
                                   <option value="0" selected="selected" disabled>Seleccionar</option>
-                                  <option value="M" selected="selected"> Masculino</option>
-                                  <option value="F" selected="selected" >Femenino</option>
+                                  <option value="M"> Masculino</option>
+                                  <option value="F" >Femenino</option>
                                 
                                 </select>
                           </div>

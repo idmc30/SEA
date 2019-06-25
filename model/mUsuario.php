@@ -114,15 +114,16 @@ class Usuario{
         return $resultado;
     }
 
-    // public function listarUsuarios(){
-    //     $sentence=$this->objPdo->prepare("SELECT * FROM sea.usuario u 
-    //                                     INNER JOIN sea.persona p on u.id_persona = p.id_persona");
-    //     $sentence->execute();
-    //     $resultado = $sentence->fetchAll(PDO::FETCH_OBJ);
-    //     return $resultado;
+    public function estadoUsuario($idusuario){
+        $sentence=$this->objPdo->prepare("SELECT estado_usuario FROM sea.usuario WHERE id_usuario=:idusuario");
+        $sentence->execute(array(
+                                'idusuario'=>$idusuario
+                            ));
+        $resultado = $sentence->fetchAll(PDO::FETCH_OBJ);
+        return $resultado[0]->estado_usuario;
 
 
-    // }
+    }
 
       public function listarUsuarios(){
         

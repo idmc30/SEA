@@ -1,3 +1,47 @@
+/**
+ * 
+ */
+
+$(document).on('click', '.estadoUsuario', function() {
+    let evento = $(this).is(':checked');
+    let idusuario = $(this).data('idusuario');
+
+    if (evento) {
+        var accion = "activo"
+        habilitarUsuario(idusuario, accion);
+    } else {
+        var accion = "inactivo"
+        habilitarUsuario(idusuario, accion);
+    }
+});
+
+
+var habilitarUsuario = function(idusu, accion) {
+    var options = {
+        type: 'POST',
+        url: 'index.php?page=usuario&action=estadosUsuario',
+        data: {
+            'cod': idusu,
+            'action': accion
+
+        },
+        dataType: 'json',
+        success: function(response) {
+            listarUsuarios();
+            swal({
+                title: response.msj,
+                icon: response.tipo,
+                allowOutsideClick: false,
+            })
+
+
+
+
+        }
+    };
+    $.ajax(options);
+};
+
 function EditUsuario(idusu) {
 
     // $("#txtDNI").prop("disabled", true);
@@ -16,7 +60,12 @@ var getUsuarios = function(idusu) {
         dataType: 'json',
         success: function(response) {
 
-
+            let sexo = response.sexo;
+            if (sexo != null) {
+                $("#cmbsexo").val(response.sexo).change();
+            } else {
+                $("#cmbsexo").val(0).change();
+            }
 
             $("#txtIdPersona").val(response.codper);
             $("#txtIdUsu").val(response.codusu);
@@ -25,6 +74,8 @@ var getUsuarios = function(idusu) {
             $("#txtapepaterno").val(response.apepaterno);
             $("#txtapematerno").val(response.apematerno);
             $("#txtnombres").val(response.nombres);
+
+
             $("#txtCorreo").val(response.correo);
             $("#txtTelefono").val(response.telef);
             $("#txtAnexo").val(response.anexo);
@@ -110,7 +161,8 @@ $(document).ready(() => {
             txtapepaterno: 'required',
             txtapematerno: 'required',
             txtnombres: 'required',
-            txtContrasena: 'required'
+            txtContrasena: 'required',
+            cmbsexo: 'required',
         },
         messages: {
             cmbRol: 'Debe seleccionar un perfil',
@@ -119,6 +171,7 @@ $(document).ready(() => {
             txtapematerno: 'Requerido',
             txtnombres: 'Requerido',
             txtContrasena: 'Requerido',
+            cmbsexo: 'Requerido',
         }
     });
 });

@@ -27,8 +27,6 @@ $(document).on('click', '.agregarMenu', function() {
     let evento = $(this).is(':checked');
     let idmenu = $(this).data('idmenysubmen');
 
-
-    // var idmeusubmenu = $(this).data('idmenysubmen');
     let idPerfil = $("#cmbRol").select2("val");
     if (evento) {
         var accion = "insert"

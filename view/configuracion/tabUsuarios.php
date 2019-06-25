@@ -1,5 +1,14 @@
 <?php $c=1 ?>
   <?php  foreach ($lusuario as $usuario): ?>
+<?php 
+ /**
+  * consultar el estado de usuario
+  */
+  $usuarioEstado= $objUSuario->estadoUsuario($usuario->id_usuario);
+?>
+
+
+
         <tr id="#">
         <td class="tabmtmth"> <?php echo $c;  ?></td> 
           <td class="tabmtmth"> <?php echo $usuario->dni_persona;  ?></td> 
@@ -15,12 +24,13 @@
 
           <td style="text-align: center;"><a href="#" onclick="EditUsuario('<?php echo $usuario->id_usuario; ?>')" ><i class="fa fa-edit" data-toggle="tooltip" title="Editar"></i></a>&nbsp
           	<?php if ($usuario->estado_usuario == 'A') { ?>
-          		<?php if ($usuario->id_usuario != $_SESSION['idsesion']) { ?>
-					<a href="#" onClick="deshabilitarUsuarios('<?php echo $usuario->id_usuario ?>');" data-toggle="tooltip" data-target="#deshabilitar"><i class="icon-close" data-toggle="tooltip" data-placement="left" title="" data-original-title="Deshabilitar"></i></a>
+              <?php if ($usuario->id_usuario != $_SESSION['idsesion']) { ?>
+                
+                <input id="habilitarUsuario" name="habilitarUsuario" data-idusuario="<?php echo $usuario->id_usuario; ?>" class="estadoUsuario" type="checkbox" <?php echo $estado = ($usuarioEstado==='A') ? 'checked' : ''; ;?>>
 				<?php } ?>
           	<?php } else{ ?>
 			<!-- &nbsp&nbsp -->
-				<a href="#" onClick="habilitarUsuarios('<?php echo $usuario->id_usuario ?>');" data-toggle="tooltip" data-target="#habilitar"><i class="icon-check" data-toggle="tooltip" data-placement="left" title="" data-original-title="Habilitar"></i></a>
+      <input id="habilitarUsuario" name="habilitarUsuario" data-idusuario="<?php echo $usuario->id_usuario; ?>" class="estadoUsuario" type="checkbox" <?php echo $estado = ($usuarioEstado==='A') ? 'checked' : ''; ;?>>
           	<?php } ?>
           </td>       
         </tr>

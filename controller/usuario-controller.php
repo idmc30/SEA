@@ -16,6 +16,35 @@ function _formAction(){
 	require 'view/configuracion/vUsuarios.php';
 }
 
+
+function _estadosUsuarioAction(){
+
+    $idusuario= $_POST['cod'];
+    $accion = $_POST['action'];
+    $idsession=$_SESSION['idsesion'];
+    list($secs, $microsec) = explode('.',  microtime(true)); //se extrae los microsegundos
+    $fecha_update_aud=date("Y-m-d H:i:s.").$microsec;
+ 
+    $usuario=new Usuario();
+
+    if ($accion=='activo') {
+      
+        $habilitarUsuario= $usuario->activarUsuario($idsession,$fecha_update_aud,$idusuario);
+        $response['msj']="Usuario activo";
+        $response['tipo']="success";
+    }
+
+    if($accion=='inactivo'){
+       $deshabilitarUsuario= $usuario->eliminarUsuario($idsession,$fecha_update_aud,$idusuario);
+       $response['msj']="Usuario inactivo";
+       $response['tipo']="success";
+    }
+    
+    header('Content-Type: application/json');
+	echo json_encode($response);
+
+}
+
 function _getUsuarioAction(){
     $codusuario= $_POST['cod'];
 
@@ -34,6 +63,7 @@ function _getUsuarioAction(){
     $response['correo']=$getUsuario->correo_persona;
     $response['telef']=$getUsuario->telefono_persona;
     $response['anexo']=$getUsuario->anexo;
+    $response['sexo']=$getUsuario->sexo;
 
     header('Content-Type: application/json');
 	echo json_encode($response);
@@ -44,10 +74,11 @@ function _getUsuarioAction(){
 
 function _listarUsuariosROlAction(){
    
-    $usuario = new Usuario();
-    $lusuario= $usuario->listarUsuariosPerfil();
-
-
+    $objUSuario = new Usuario();
+    $lusuario= $objUSuario->listarUsuariosPerfil();
+    
+    // var_dump($estadousuario);
+   
     require 'view/configuracion/tabUsuarios.php';
 }
 
@@ -77,7 +108,7 @@ function _registrarUsuariosAction(){
     $usuario = $objUsuario->consultarUsuarioByID($persona);
     
     if (!empty($codpersona) && !empty($idusuario)) {
-        
+
        $updateUsuario=$objUsuario->updatetUsuario($perfil,$_SESSION['idsesion'],$idusuario);
        $updatePersona=$objPersona->updatePersona($dni,$nombres,$apepaterno,$apematerno,$sexo,$correo,$telefono,$anexo,$_SESSION['idsesion'],$codpersona);
        $response['msj']="Modificado satisfactoriamente";
