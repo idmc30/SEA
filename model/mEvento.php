@@ -58,11 +58,21 @@ public function consultarParticipanteByID($id_usuario) {
 }
 
 public function listarEventosActivos() {
-    $stmt = $this->objPdo->prepare("SELECT * FROM sea.eventos WHERE evento_estado IN (1,2,4)");
+    $stmt = $this->objPdo->prepare("SELECT e2.evento_pertenece,e2.evento_id,e2.id_padre,e2.evento_nombre
+    FROM sea.eventos e1
+   INNER JOIN sea.eventos e2 ON e1.evento_id=e2.evento_pertenece
+  WHERE e2.evento_estado IN (1,2,4)
+   order by e2.evento_pertenece,e2.evento_id ASC");
     $stmt->execute();
     $eventoActivo = $stmt->fetchAll(PDO::FETCH_OBJ);
     return $eventoActivo;
 }
+// public function listarEventosActivos() {
+//     $stmt = $this->objPdo->prepare("SELECT * FROM sea.eventos WHERE evento_estado IN (1,2,4)ORDER BY evento_id ASC");
+//     $stmt->execute();
+//     $eventoActivo = $stmt->fetchAll(PDO::FETCH_OBJ);
+//     return $eventoActivo;
+// }
 
 public function consultarAsistenteByDNI($dni, $idEvento) {
     $stmt = $this->objPdo->prepare("SELECT evpar_id FROM sea.evento_participantes ep INNER JOIN sea.usuario u ON u.id_usuario = ep.id_usuario WHERE ep.evento_id = :idEvento AND ep.tipopar_id = 3 AND ep.evpar_estado LIKE 'A' AND u.dni_usuario LIKE :dni");

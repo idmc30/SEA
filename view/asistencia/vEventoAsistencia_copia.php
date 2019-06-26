@@ -51,11 +51,10 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <?php $c=1; ?>
-       
+                          <?php $c = 1; ?>
                           <?php foreach ($listaEventoActivo as $eventoActivo): ?>
                           <tr>
-                          <td><?php echo $c ?></td>
+                            <td><?php echo $c ?></td>
                             <td><?php echo $eventoActivo->evento_nombre ?></td>
                             <td><?php echo $eventoActivo->evento_descripcion ?></td>
                             <?php
@@ -91,7 +90,7 @@
                               </a>
                             </td>
                           </tr>
-                                      
+                          <?php $c = $c+1; ?>                  
                           <?php endforeach ?>
                         </tbody>
                       </table>
