@@ -13,6 +13,22 @@ function _inicioAction(){
 	require 'view/vInicio.php';
 }
 
+
+
+function _listarEventosAction(){
+	$idUsuario= $_SESSION['idsesion'];
+
+
+	$evento= new Evento();
+	$participanteEvento = new Participante();
+	
+	$leventos= $evento->listarEventoInicio();
+
+
+	require 'view/tabInicio.php';
+}
+
+
 function _desinscribirAction(){
 
 	$idsesionupdateaud=$_SESSION['idsesion'];

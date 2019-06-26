@@ -12,7 +12,20 @@ class Evento {
 
         $this->objPdo = new Conexion(1);
     }
-
+/**
+ * idmc 26/06/2019
+ */
+public function listarEventoInicio(){
+    $sentence=$this->objPdo->prepare("SELECT*FROM sea.eventos e
+    INNER JOIN sea.evento_estados ees ON e.evento_estado=ees.evento_estado_id 
+    INNER JOIN sea.evento_tipos et ON e.tipo_evento_id=et.evento_tipo_id 
+    WHERE evento_nivel=1 AND 
+    evento_estado_nombre in ('GENERADO','REPROGRAMADO','EN CURSO')
+    ORDER BY evento_id DESC ");
+    $sentence->execute();
+    $resultado = $sentence->fetchAll(PDO::FETCH_OBJ);
+    return $resultado;
+}
 
  /*@DVALDERA*/
 

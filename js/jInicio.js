@@ -190,7 +190,7 @@ $(document).ready(() => {
 var listarEventos = function() {
     var options = {
         type: 'POST',
-        url: 'index.php?page=inicio&action=listarEventosInicio',
+        url: 'index.php?page=inicio&action=listarEventos',
         data: {},
         dataType: 'html',
         success: function(response) {
