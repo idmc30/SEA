@@ -62,15 +62,13 @@
                             <td> <?php echo "<b>".$c."</b>";?></td>
                             <?php $c=$c+1;?>
                           <?php else: ?>
-                          <?php $c=$c-1 ?>
-                          <td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo "<b>".$c.".".$d."</b>";?></td>
-                            <?php if ($codEvento==$eventoActivo->evento_pertenece): ?>
-                                <?php $d=$d+1 ?> 
-                                <?php $c=$c+1 ?>                                 
-                            <?php endif ?> 
-                          <?php endif ?>
+                        
+                       
+                         <td></td>
 
-
+                            <?php endif ?>
+                            
+                          
 
                           
                             <td><?php echo $eventoActivo->evento_nombre ?></td>                    
@@ -205,8 +203,8 @@
  <script src="assets/customs/plugins/datatable/spanish_datatable.js"></script>
   <script>
     $('#tabladt').DataTable({
-        "bLengthChange": false,
-        "lengthMenu": true,
+        "bLengthChange": true,
+
         "ordering": false,
         "language": spanish_datatable
     });
