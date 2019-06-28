@@ -14,7 +14,7 @@ require 'model/mUsuario.php';
 function _formAction()
 {
 	 $evento= new Evento();
-	 $levento= $evento->listarEvento();
+	 $levento= $evento->listarEventosActivos();
 
 	 $tipoParticipante= new TipoParticpante();
 	 $ltipoParticipante= $tipoParticipante->listarTipoParticipante();

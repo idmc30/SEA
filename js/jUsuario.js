@@ -122,6 +122,7 @@ var registrarUsuariosPerfil = function(formData) {
                 icon: response.tipo,
                 allowOutsideClick: false,
             })
+            listarUsuarios();
         }
     };
     $.ajax(options);

@@ -6,7 +6,7 @@ require 'model/mControlAsistencia.php';
 require 'model/mPersona.php';
 require 'model/mUsuario.php';
 require 'model/mParticipante.php';
-// require 'model/mPonente.php';
+require 'model/mTipoPersona.php';
 
 function _controlAction(){
 
@@ -49,9 +49,24 @@ function _asistenciaAction(){
 }
 
 function _detalleAction()
-{
+{   
+	$evento= new Evento();
+	$tipopersona= new TipoPersona();
+	$ltipopersona=$tipopersona->listarTipoPersona();
+	$levento= $evento->listarEventosActivos();
 	require 'view/asistencia/vDetalleAsistencia.php';
 }
+
+
+function _listarDetalleAsistenciaAction(){
+
+	$idEvento = $_POST['idEvento'];
+	$objControlAsistencia = new ControlAsistencia();
+	$ldetalle = $objControlAsistencia->listarParticipantes($idEvento);
+	require 'view/asistencia/tabDetalleAsistencia.php';
+}
+
+
 
 function _entradaAsistenciaAction()
 {
