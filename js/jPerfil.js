@@ -69,7 +69,7 @@ function GuardarPerfil() {
 function VerificarDNI(term) {
     var options = {
         type: 'GET',
-        url: "http://172.17.133.188/ws_pj/index.php?page=reniec&action=consultarxdni",
+        url: "http://172.17.128.37/ws_pj/index.php?page=reniec&action=consultarxdni",
         data: { 'term': term },
         dataType: 'json',
         success: function(response) {
@@ -107,36 +107,36 @@ function RegistrarPerfil() {
             method: "POST",
             url: 'index.php?page=perfil&action=actualizarPerfil',
             data: {
-              'dni': dni, 
-              'profesion': profesion, 
-              'nombres': nombres, 
-              'correo': correo, 
-              'apellidos': apellidos, 
-              'celular': celular, 
-              'sexo': sexo,
-              'anexo': anexo,
-              'direccion': direccion,
-              'modalidad': modalidad,
-              'fecha': fecha,
-              'foto': foto
+                'dni': dni,
+                'profesion': profesion,
+                'nombres': nombres,
+                'correo': correo,
+                'apellidos': apellidos,
+                'celular': celular,
+                'sexo': sexo,
+                'anexo': anexo,
+                'direccion': direccion,
+                'modalidad': modalidad,
+                'fecha': fecha,
+                'foto': foto
             }
         })
         .done(function(text) {
             // if(text.substring(0,2) =="Pe"){
-              swal({
-                title: text,
-                icon: 'success',
-                timer: 2000,
-                button: false
-              }).then(
-                function() {},
-                // handling the promise rejection
-                function(dismiss) {
-                    if (dismiss === 'timer') {
-                        console.log('I was closed by the timer')
+            swal({
+                    title: text,
+                    icon: 'success',
+                    timer: 2000,
+                    button: false
+                }).then(
+                    function() {},
+                    // handling the promise rejection
+                    function(dismiss) {
+                        if (dismiss === 'timer') {
+                            console.log('I was closed by the timer')
+                        }
                     }
-                }
-              )
-            // }
+                )
+                // }
         });
 }
