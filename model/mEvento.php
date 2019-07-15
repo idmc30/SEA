@@ -58,11 +58,9 @@ public function consultarParticipanteByID($id_usuario) {
 }
 
 public function listarEventosActivos() {
-    $stmt = $this->objPdo->prepare("SELECT e2.evento_pertenece,e2.evento_id,e2.id_padre,e2.evento_nombre
-    FROM sea.eventos e1
-   INNER JOIN sea.eventos e2 ON e1.evento_id=e2.evento_pertenece
-  WHERE e2.evento_estado IN (1,2,4)
-   order by e2.evento_pertenece,e2.evento_id ASC");
+        $stmt = $this->objPdo->prepare("SELECT e2.evento_pertenece,e2.evento_id,e2.id_padre,e2.evento_nombre,e2.evento_nivel,e2.evento_descripcion,e2.evento_hora_inicio,e2.evento_fecha_inicio,e2.lugar_id
+        FROM sea.eventos e1 INNER JOIN sea.eventos e2 ON e1.evento_id=e2.evento_pertenece
+        WHERE e2.evento_estado IN (1,2,4) ORDER BY e2.evento_pertenece,e2.evento_id ASC");
     $stmt->execute();
     $eventoActivo = $stmt->fetchAll(PDO::FETCH_OBJ);
     return $eventoActivo;

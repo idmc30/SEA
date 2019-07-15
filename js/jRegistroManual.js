@@ -215,7 +215,7 @@ function ValidarDNI(term) {
 function VerificarDNI(term) {
     var options = {
         type: 'GET',
-        url: "http://172.17.133.188/ws_pj/index.php?page=reniec&action=consultarxdni",
+        url: "http://172.17.128.37/ws_pj/index.php?page=reniec&action=consultarxdni",
         data: { 'term': term },
         dataType: 'json',
         success: function(response) {
@@ -268,30 +268,30 @@ function AceptarUsuario() {
         .done(function(text) {
             if (text.substring(0, 2) != "Us") {
                 swal({
-                    title: text,
-                    icon: 'success',
-                    timer: 3000,
-                    button: false
-                }).then(
-                    function() {},
-                )
-                // location.reload();
+                        title: text,
+                        icon: 'success',
+                        timer: 3000,
+                        button: false
+                    }).then(
+                        function() {},
+                    )
+                    // location.reload();
                 listarUsuarios();
                 LimpiarCampos();
             } else {
                 swal({
-                    title: text,
-                    icon: 'warning',
-                    timer: 3000,
-                    button: false
-                }).then(
-                    function() {
-                        document.getElementById("txtIdPersona").value = "";
-                        document.getElementById("txtDNI").value = "";
-                    },
-                )
-                // location.reload();
-                // listarUsuarios();
+                        title: text,
+                        icon: 'warning',
+                        timer: 3000,
+                        button: false
+                    }).then(
+                        function() {
+                            document.getElementById("txtIdPersona").value = "";
+                            document.getElementById("txtDNI").value = "";
+                        },
+                    )
+                    // location.reload();
+                    // listarUsuarios();
             }
         });
 }

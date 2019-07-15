@@ -210,7 +210,7 @@ var listaParticipantes = function(idEvento) {
 function VerificarDNI(term) {
     var options = {
         type: 'GET',
-        url: "http://172.17.133.188/ws_pj/index.php?page=reniec&action=consultarxdni",
+        url: "http://172.17.128.37/ws_pj/index.php?page=reniec&action=consultarxdni",
         data: { 'term': term },
         dataType: 'json',
         success: function(response) {

@@ -41,7 +41,7 @@
                           <tr style="text-align: center; background: #282f3a; color: #fff">
                             <th>N°</th>
                             <th>NOMBRE</th>
-                            <th>DESCRIPCIÓN</th>
+                        
                             <th>FECHA</th>
                             <th>HORA</th>
                             <th>LUGAR</th>
@@ -52,12 +52,26 @@
                         </thead>
                         <tbody>
                           <?php $c=1; ?>
-       
+                          <?php $d=1; ?> 
+                           
                           <?php foreach ($listaEventoActivo as $eventoActivo): ?>
                           <tr>
-                          <td><?php echo $c ?></td>
-                            <td><?php echo $eventoActivo->evento_nombre ?></td>
-                            <td><?php echo $eventoActivo->evento_descripcion ?></td>
+                          <?php echo $codEvento= $eventoActivo->evento_pertenece ?>
+                          <?php if ($eventoActivo->id_padre==NULL): ?>
+                             
+                            <td> <?php echo "<b>".$c."</b>";?></td>
+                            <?php $c=$c+1;?>
+                          <?php else: ?>
+                        
+                       
+                         <td></td>
+
+                            <?php endif ?>
+                            
+                          
+
+                          
+                            <td><?php echo $eventoActivo->evento_nombre ?></td>                    
                             <?php
                               list($ano,$mes,$dia) = explode('-',$eventoActivo->evento_fecha_inicio);
                               $fecha_inicio_evento = $dia.'/'.$mes.'/'.$ano;
@@ -91,7 +105,7 @@
                               </a>
                             </td>
                           </tr>
-                                      
+                             
                           <?php endforeach ?>
                         </tbody>
                       </table>
@@ -189,8 +203,9 @@
  <script src="assets/customs/plugins/datatable/spanish_datatable.js"></script>
   <script>
     $('#tabladt').DataTable({
-        "bLengthChange": false,
-        "lengthMenu": [10],
+        "bLengthChange": true,
+
+        "ordering": false,
         "language": spanish_datatable
     });
   </script>

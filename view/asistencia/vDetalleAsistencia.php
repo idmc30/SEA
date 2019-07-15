@@ -43,7 +43,7 @@
                           <select class="js-example-basic-single" style="width:100%" id="cmbevento" name="cmbevento">
                           <option value="0" selected="selected" disabled>Seleccionar un evento...</option>
                           <?php foreach ($levento as $evento): ?>
-                            <option value="<?php echo $evento->id_evento ?>"><?php echo $evento->nombre_evento ?></option>
+                            <option value="<?php echo $evento->evento_id ?>"><?php echo $evento->evento_nombre ?></option>
                           <?php endforeach ?>
                             
                           </select>
@@ -100,8 +100,17 @@
     </div>
   </div> 
   <?php require'view/general/lScript.php' ?>
+  <script src="assets/js/select2.js"></script>
   <script src="assets/js/data-table.js"></script>
-  <!-- <script src="js/jDetalleAsistencia.js"></script> -->
+  <script src="assets/customs/plugins/datatable/spanish_datatable.js"></script>
+  <script>
+    $('#tabladt').DataTable({
+        "bLengthChange": true,
+        "lengthMenu": [10],
+        "language": spanish_datatable
+    });
+  </script>
+  <script src="js/jDetalleAsistencia.js"></script>
   
 </body>
 
