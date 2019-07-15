@@ -41,6 +41,7 @@ function _perfilAction(){
 	$eventoParticipante = $objEvento->consultarParticipanteByID($id_usuario_login);
 	$cantidadAsistencia = $objEvento->cantidadAsistenciaByID($id_usuario_login);
 	$cantidadCertificado = $objEvento->cantidadCertificadoByID($id_usuario_login);
+	// var_dump($id_usuario_login);
 
 	require 'view/usuario/vPerfil.php';
 }

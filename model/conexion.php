@@ -15,7 +15,7 @@ class Conexion extends PDO {
            switch ($n) {
             case 1:
               
-              $this->db = 'sea';
+              $this->db = 'bdcsjla';
               $this->user = 'postgres';
               $this->type = 'pgsql';
               $this->pass = '123';              

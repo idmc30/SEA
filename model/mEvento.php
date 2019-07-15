@@ -44,7 +44,7 @@ public function listarEventoInicio(){
 }
 
 public function cantidadAsistenciaByID($id_usuario) {
-    $stmt = $this->objPdo->prepare("SELECT COUNT(*) as asistencia FROM sea.evento_participantes ep INNER JOIN sea.asistencias a on a.evpart_id = ep.evpar_id WHERE ep.id_usuario = :id_usuario AND a.estado_asistencia LIKE 'E' OR a.estado_asistencia LIKE 'S'");
+    $stmt = $this->objPdo->prepare("SELECT COUNT(*) as asistencia FROM sea.evento_participantes ep INNER JOIN sea.asistencias a on a.evpart_id = ep.evpar_id WHERE ep.id_usuario = :id_usuario AND a.estado_asistencia not LIKE ''-- OR a.estado_asistencia LIKE 'S'");
     $stmt->execute(array('id_usuario' => $id_usuario));
     $asistencia = $stmt->fetchAll(PDO::FETCH_OBJ);
     return $asistencia[0];
