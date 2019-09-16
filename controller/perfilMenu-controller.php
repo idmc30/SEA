@@ -19,7 +19,6 @@ function _listarMenuAction(){
     $idPerfil= $_POST['codperfil'];
     $menu = new Menu();
     $acceso= new Acceso();
-    // $lmenu = $menu->listarMenuNavegacion($idPerfil);
     $lmenu = $menu->listarMenuNavegacionAsignacion();
 
     
@@ -29,7 +28,7 @@ function _listarMenuAction(){
 
 function _accesoAction(){
   
-    list($secs, $microsec) = explode('.',  microtime(true)); //se extrae los microsegundos
+    list($secs, $microsec) = explode('.',  microtime(true));
     
     $idrol= $_POST['codperfil'];
     $idmenu= $_POST['codmenu'];
@@ -49,7 +48,6 @@ function _accesoAction(){
    }
 
    if ($accion=='delete') {
-       # code...
        $estadoacceso= 'I';
        $fechaupdateaud=date("Y-m-d H:i:s.").$microsec;
        $uresponse=$acceso->eliminarAcceso($estadoacceso,$idrol,$idmenu,$idsession,$fechaupdateaud);
@@ -57,7 +55,6 @@ function _accesoAction(){
        $response['msj']="Se quito correctamente";
    }
    
-
  header('Content-Type: application/json');
  echo json_encode($response);
 

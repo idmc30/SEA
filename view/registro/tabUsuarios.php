@@ -12,7 +12,6 @@
 					<a href="#" onClick="deshabilitarUsuarios('<?php echo $usuario->id_usuario ?>');" data-toggle="tooltip" data-target="#deshabilitar"><i class="icon-close" data-toggle="tooltip" data-placement="left" title="" data-original-title="Deshabilitar"></i></a>
 				<?php } ?>
           	<?php } else{ ?>
-			<!-- &nbsp&nbsp -->
 				<a href="#" onClick="habilitarUsuarios('<?php echo $usuario->id_usuario ?>');" data-toggle="tooltip" data-target="#habilitar"><i class="icon-check" data-toggle="tooltip" data-placement="left" title="" data-original-title="Habilitar"></i></a>
           	<?php } ?>
           </td>       

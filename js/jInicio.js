@@ -33,8 +33,6 @@ function darDeBaja(idUsuario, idEvento) {
 
 }
 
-
-
 var salirdeEvento = function(idUsuario, idEvento) {
     var options = {
         type: 'POST',
@@ -60,9 +58,7 @@ var salirdeEvento = function(idUsuario, idEvento) {
 
 
 function modadalEvento(idEvento) {
-    // $("#exampleModal-2").show();
     $('#exampleModal-2').modal('show');
-    // alert(idEvento);
     $.post("index.php?page=inicio&action=getEventoInicio", { id: idEvento }, function(response) {
         console.log(response)
         $("#labelnombre").text(response.nombreEvento);
@@ -108,10 +104,9 @@ function Inscribirse(idUsuario, idEvento) {
         if (result) {
             $.post('index.php?page=inscripcionManual&action=consultarEstadoCertificado', { id: idEvento }, function(response) {
 
-                let estado = response.estado; //estado del evento si cuenta con certificado o no 
+                let estado = response.estado;
 
-                if (estado) { //el evento cuenta con certificado
-                    //verificamos si desea certificado
+                if (estado) {
                     swal({
                         title: 'Desea Certificado?',
                         text: "",
@@ -147,8 +142,7 @@ function Inscribirse(idUsuario, idEvento) {
                         }
                     })
 
-
-                } else { //el evento no cuenta con certificado
+                } else {
                     registrarInscripcion(idUsuario, idEvento, null)
                 }
 
@@ -196,7 +190,6 @@ var listarEventos = function() {
         success: function(response) {
             $('#tabladt').dataTable().fnDestroy();
             $("#listadoEventos").html(response);
-            //$('#tabladt').dataTable();
             $('#tabladt').DataTable({
                 "bLengthChange": false,
                 "lengthMenu": [10],

@@ -9,13 +9,11 @@ function AceptarTipoEvento() {
             .done(function(text) {
                 swal({
                     title: text,
-                    // text: 'I will close in 2 seconds.',
                     icon: 'success',
                     timer: 2000,
                     button: false
                 }).then(
                     function() {},
-                    // handling the promise rejection
                     function(dismiss) {
                         if (dismiss === 'timer') {
                             console.log('I was closed by the timer')
@@ -61,7 +59,6 @@ function verificarFormulario() {
             button: false
         }).then(
             function() {},
-            // handling the promise rejection
             function(dismiss) {
                 if (dismiss === 'timer') {
                     console.log('I was closed by the timer')
@@ -120,7 +117,6 @@ function EliminarTipoEvento(id_tipo_evento, estado) {
     var msj = '';
     if (estado == 'FALSE') { msj = '¿Esta seguro de eliminar el tipo de evento?' }
     swal({
-        // title: msj,
         text: msj,
         icon: 'warning',
         showCancelButton: true,
@@ -160,13 +156,11 @@ function ProcesoCambiarEstadoTipoEvento(id_tipo_evento, estado) {
         .done(function(text) {
             swal({
                 title: text,
-                // text: 'I will close in 2 seconds.',
                 icon: 'success',
                 timer: 2000,
                 button: false
             }).then(
                 function() {},
-                // handling the promise rejection
                 function(dismiss) {
                     if (dismiss === 'timer') {
                         console.log('I was closed by the timer')

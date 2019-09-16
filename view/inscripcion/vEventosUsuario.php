@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">  
-<!-- 1.- CGuerrero  04/04/2049 Lista de Eventos Inscrios de Usuarios -->
 <?php require 'view/general/lHead.php' ?>
 <body class="sidebar-dark">
   <div class="container-scroller">
@@ -32,7 +31,6 @@
               <div class="card">              
               <div class="card-header cardmtmheader"></div>
               <div class="card-body">
-                <!-- Inicio de tabla listado de eventos -->
                 <div class="row">
                   <div class="col-12">
                     <div class="table-responsive">
@@ -86,7 +84,6 @@
                     </div>
                   </div>
                 </div>
-                <!-- Fin de tabla listado de eventos -->
               </div>
               </div>
             </div>

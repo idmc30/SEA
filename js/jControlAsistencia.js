@@ -197,11 +197,6 @@ var listaParticipantes = function(idEvento) {
         success: function(response) {
             $('#tabladt').dataTable().fnDestroy();
             $("#listaParticipante").html(response);
-            // $('#tabladt').DataTable({
-            //     "bLengthChange": false,
-            //     "lengthMenu": [10],
-            //     "language": spanish_datatable
-            // });
         }
     };
     $.ajax(options);
@@ -210,7 +205,7 @@ var listaParticipantes = function(idEvento) {
 function VerificarDNI(term) {
     var options = {
         type: 'GET',
-        url: "http://172.17.128.37/ws_pj/index.php?page=reniec&action=consultarxdni",
+        url: "http://172.17.128.37:8043/ws_pj/index.php?page=reniec&action=consultarxdni",
         data: { 'term': term },
         dataType: 'json',
         success: function(response) {
@@ -233,7 +228,6 @@ function VerificarDNI(term) {
 }
 
 function controlPermisos(id_asistencia, nombreCompleto) {
-    // $("#nombreAsistente").val(nombreCompleto);
     $('#nombreAsistente').html(nombreCompleto);
     var options = {
         type: 'POST',
@@ -245,11 +239,6 @@ function controlPermisos(id_asistencia, nombreCompleto) {
         success: function(response) {
             $('#tabladt').dataTable().fnDestroy();
             $("#listaPpermiso").html(response);
-            // $('#tabladt').DataTable({
-            //     "bLengthChange": false,
-            //     "lengthMenu": [10],
-            //     "language": spanish_datatable
-            // });
         }
     };
     $.ajax(options);
@@ -300,7 +289,6 @@ function desactivarAsistencia(id_asistencia, idEvento) {
             }
         }
     }).then(function(result) {
-        // console.log(result);
         if (result) {
 
             desactivarAsistencias(id_asistencia, idEvento);

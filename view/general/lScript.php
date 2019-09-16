@@ -1,4 +1,3 @@
-<!-- 1.- CGuerrero  04/04/2049 Scripts -->
 <!-- plugins:js -->
   <script src="assets/vendors/js/vendor.bundle.base.js"></script>
   <script src="assets/vendors/js/vendor.bundle.addons.js"></script>

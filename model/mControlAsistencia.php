@@ -7,7 +7,6 @@ class ControlAsistencia{
         $this->objPdo = new Conexion(1);
         $this->objMysl = new Conexion(3);
     }
-    /*INICIO @DVALDERA - 140519*/
     public function eliminarAsistencia($asist_id, $id_session_update_aud){
       $sentence = $this->objPdo->prepare("UPDATE sea.asistencias SET estado_asistencia = 'I', fecha_update_aud = NOW(), id_session_update_aud = :id_session_update_aud WHERE asist_id = :asist_id");
       $resultado = $sentence->execute(array('asist_id' => $asist_id, 'id_session_update_aud' => $id_session_update_aud,
@@ -85,13 +84,6 @@ class ControlAsistencia{
       return $asistemteEntrada[0]->asist_id;
     }
 
-    // public function consultarSoloEntradaById($evpart_id){
-    //   $stmt = $this->objPdo->prepare("SELECT asist_id, estado_asistencia FROM sea.asistencias WHERE evpart_id = :evpart_id AND estado_asistencia LIKE 'E'OR estado_asistencia LIKE 'S' ");
-    //   $stmt->execute(array('evpart_id' => $evpart_id ));
-    //   $asistemteEntrada = $stmt->fetchAll(PDO::FETCH_OBJ);
-    //   return $asistemteEntrada[0];
-    // }
-
     public function consultarSalidaById($evpart_id){
       $stmt = $this->objPdo->prepare("SELECT asist_id FROM sea.asistencias WHERE evpart_id = :evpart_id AND estado_asistencia LIKE 'S'");
       $stmt->execute(array('evpart_id' => $evpart_id ));
@@ -145,8 +137,7 @@ class ControlAsistencia{
         $resultado = $sentence->execute(array('id_asistencia' => $id_asistencia, 'id_session_update_aud' => $id_session_update_aud ));
         return $resultado;
     }
-    /*FIN @DVALDERA - 140519*/
-
+    
     public function listarDetalleAsistenciaInicio($nombreTipoPersona) {
         $stmt = $this->objPdo->prepare("SELECT p.ape_paterno || ' ' || p.ape_materno || ' ' || p.nombre_persona  as persona,nombre_tipo_persona,p.dni_persona,
           ppe.nombre_perfil_participante_evento,to_char(tap.fecha_tiempo_asistencia_participante,'DD/MM/YYYY') as fecha_tiempo_asistencia_participante,

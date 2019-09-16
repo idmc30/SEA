@@ -16,7 +16,6 @@ var modalaniadir = function(){
 
 $(document).on('click', '#btn_aniadir', function(event) {
 	event.preventDefault();
-	/* Act on the event */
 
 	modalaniadir();
 
@@ -25,7 +24,6 @@ $(document).on('click', '#btn_aniadir', function(event) {
 
 $(document).on('click', '.btn_addcarac', function(event) {
 	event.preventDefault();
-	/* Act on the event */
 
 
 	$('#div_caract').append(' <div class="form-group row">'+

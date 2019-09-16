@@ -1,9 +1,7 @@
 <?php 
 session_start();
 require 'model/mLugar.php';
-/** 
- * 01.- Irwin Morales 09/04/2019 registo de lugar
-*/
+
 function _registroAction()
 {
 	$manteactivo = 'active';
@@ -46,7 +44,6 @@ function _consultarLugarByIdAction(){
 	if($lugar == NULL){
 		$lugar = array();
 	}
-	
 	
 	echo json_encode($lugar); 
 }

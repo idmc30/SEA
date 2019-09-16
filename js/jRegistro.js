@@ -45,7 +45,6 @@ function ValidarDNI(term) {
                     button: false
                 }).then(
                     function() {},
-                    // handling the promise rejection
                     function(dismiss) {
                         if (dismiss === 'timer') {
                             console.log('I was closed by the timer')
@@ -59,7 +58,7 @@ function ValidarDNI(term) {
 function VerificarDNI(term) {
     var options = {
         type: 'GET',
-        url: "http://172.17.128.37/ws_pj/index.php?page=reniec&action=consultarxdni",
+        url: "http://172.17.128.37:8043/ws_pj/index.php?page=reniec&action=consultarxdni",
         data: { 'term': term },
         dataType: 'json',
         success: function(response) {

@@ -1,8 +1,6 @@
 function desactivar(idparticipanteEvento) {
 
-    // alert(idparticipanteEvento);
     swal({
-        // title: msj,
         text: 'Esta seguro que desea eliminar al representate?',
         icon: 'warning',
         showCancelButton: true,
@@ -26,7 +24,6 @@ function desactivar(idparticipanteEvento) {
             }
         }
     }).then(function(result) {
-        // console.log(result);
         if (result) {
 
             eliminarRepresentante(idparticipanteEvento);
@@ -68,8 +65,6 @@ $(document).on('click', '#btnregistrarReprese', function(event) {
         let codigoOrganizador = $("#idorganizadortxt").val();
         registrarRepresentante(codigoOrganizador, idusuario);
         limpiarModal();
-
-
     } else {
         swal({
             title: "Tiene que Seleccionar un representante",
@@ -78,9 +73,6 @@ $(document).on('click', '#btnregistrarReprese', function(event) {
         })
 
     }
-
-    // registrarRepresentante(formData);
-
 });
 
 function limpiarModal() {
@@ -110,7 +102,6 @@ var registrarRepresentante = function(codigoOrganizador, idUsuario) {
 };
 
 function asignar(idOrganizador) {
-    // alert(idOrganizador);
     $("#idorganizadortxt").val(idOrganizador);
 }
 
@@ -136,9 +127,6 @@ var modalidadContractual = function(idModalidad) {
         success: function(response) {
 
             $("#exampleInputUsername1").val(response.nombreModalidad);
-
-            // console.log(response);
-            // listarOrganizador();
         }
     };
     $.ajax(options);
@@ -193,19 +181,14 @@ var eliminarOrganizador = function(cod) {
                 allowOutsideClick: false,
             })
 
-
             listarOrganizador();
         }
     };
     $.ajax(options);
 };
 
-
-
 function editar(id) {
-
     editarOrganizador(id);
-
 }
 
 var editarOrganizador = function(cod) {
@@ -223,7 +206,6 @@ var editarOrganizador = function(cod) {
             $("#codorganizador").val(response.idOrganizador);
             $("#cmbtipoorga").val(response.idTipoOrganizador).change();
             $("#btnorganizador").attr('value', 'Actualizar');
-
         }
     };
     $.ajax(options);
@@ -231,7 +213,6 @@ var editarOrganizador = function(cod) {
 
 $(document).on('submit', '#frmOrganizador', function(event) {
     event.preventDefault();
-    /* Act on the event */
     var formElement = document.getElementById("frmOrganizador");
     var formData = new FormData(formElement);
 
@@ -246,8 +227,8 @@ var registrarOrganizador = function(formData) {
         type: 'POST',
         url: 'index.php?page=organizador&action=registrarOrganizador',
         data: formData,
-        processData: false, // tell jQuery not to process the data
-        contentType: false, // tell jQuery not to set contentType		
+        processData: false, 
+        contentType: false, 		
         dataType: 'json',
         success: function(response) {
             limpiar()
@@ -257,7 +238,6 @@ var registrarOrganizador = function(formData) {
                 icon: response.tipo,
                 allowOutsideClick: false,
             }).then(function() {
-                // listardependencias();
             }).catch(swal.noop)
         }
     };
@@ -289,7 +269,6 @@ var listarOrganizador = function() {
         success: function(response) {
             $('#tabladt').dataTable().fnDestroy();
             $("#lorganizador").html(response);
-            //$('#tabladt').dataTable();
             $('#tabladt').DataTable({
                 "bLengthChange": false,
                 "lengthMenu": [10],
@@ -306,13 +285,10 @@ $(document).ready(() => {
         rules: {
             cmbtipoorga: 'required',
             txtnombre: 'required'
-
-
         },
         messages: {
             cmbtipoorga: 'Debe seleccionar un tipo de organizador',
             txtnombre: 'Debe ingresar un nombre',
-
         }
     });
 

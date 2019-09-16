@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-<!-- 1.- CGuerrero  04/04/2049 Registro de Evento -->
 <?php require 'view/general/lHead.php' ?>
 
 <body class="sidebar-dark">
@@ -78,12 +77,6 @@
             <br>              
           <?php endforeach ?>  
         <?php endif ?>
-
-
-
-
-
-
 
         <div id="div_modales"></div>
 

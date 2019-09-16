@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-<!-- 1.- CGuerrero  04/04/2049 Registro de Usuario -->
 <?php require 'view/general/lHead.php' ?>
 
 <body class="sidebar-dark">
@@ -26,7 +25,6 @@
               </div>
             </div>
           </div>
-          <!-- --------------------------------------------- -->
             <br>
             <div class="row">
             <div class="col-lg-3 grid-margin stretch-card">
@@ -34,9 +32,7 @@
               <div class="card-header cardmtmheader">Perfil</div>
               <div class="card-body">
                 <div class="auth-form-transparent text-left p-3">              
-                  <!-- <form class="pt-3" id="frmRegistro" name="frmRegistro"> -->
                   <div class="form-group row">
-                      <!-- <label  class="col-sm-4 col-form-label"><b></b></label> -->
                       <div class="col-lg-12">
                         <select class="js-example-basic-single" style="width:100%" id="cmbRol" name="cmbRol">                          
                           <option value="0" selected="selected" disabled>Seleccionar Perfil</option>
@@ -47,8 +43,6 @@
                       </div>
                     </div>
                     <br>
-                   
-                  <!-- </form> -->
                 </div>
               </div>
             </div>
@@ -89,11 +83,6 @@
   <script src="assets/js/select2.js"></script>
   <script src="assets/customs/plugins/datatable/spanish_datatable.js"></script>
   <script>
-    // $('#tabladt').DataTable({
-    //     "bLengthChange": false,
-    //     "lengthMenu": [10],
-    //     "language": spanish_datatable
-    // });
   </script>
   <script type="text/javascript" src="js/jPerfilMenu.js"></script>
 </body>

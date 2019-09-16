@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-<!-- 1.- CGuerrero  04/04/2049 Lugar de Evento -->
 <?php require 'view/general/lHead.php' ?>
 <body class="sidebar-dark">
   <div class="container-scroller">
@@ -52,7 +51,6 @@
               </div>
             </div>
           </div>
-          <!-- INICIO DE MODAL -->
                         <div class="modal fade" id="exampleModal-2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel-2" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                               <div class="modal-content">
@@ -70,17 +68,12 @@
                                   <label>Hora: &nbsp<b id="horab">8:00 a.m.</b></label>
                                   <br>
                                   <label>Lugar: &nbsp<b id="lugarb"></b></label>
-                                  <!-- <br>
-                                  <label>Costo del Evento: s/.&nbsp<b id="labelcostoevento"></b></label> -->
                                   <br>
                                   <label>Costo de Certificado: s/.&nbsp<b id="labelcostrocertificado">Auditorio Central</b></label>
                                 </div>
                               </div>
                             </div>
-                          </div>
-                  <!-- FIN DE MODAL -->
-  
-            
+                          </div>     
         </div>        
         <?php require'view/general/vFooter.php' ?>        
       </div>

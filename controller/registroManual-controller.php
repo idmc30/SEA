@@ -1,9 +1,6 @@
 <?php  
 session_start();
-/**
- * 01 DValdera 25/04/2019 controlador de registro manual
-*/
-// require 'model/mPersona.php';
+
 require 'model/mUsuario.php';
 require 'model/mPersona.php';
 
@@ -11,33 +8,22 @@ require 'model/mPersona.php';
 function _formAction()
 {
 	$objUsuario = new Usuario();
-	// $objPersona = new Persona();
 	$listaUsuario = $objUsuario->listarUsuarios();
 	require 'view/registro/vUsuario.php';
 }
-
-/**
- * idmc 02/05/2019 
- */
 
 function _deshabilitarUsuarioAction(){
 
    $idUsuario=$_POST['codusuario'];
 	 $id_sesion_update_aud=  $_SESSION['idsesion'];
-	 list($secs, $microsec) = explode('.',  microtime(true)); //se extrae los microsegundos
+	 list($secs, $microsec) = explode('.',  microtime(true)); 
 	 $fecha_update=date("Y-m-d H:i:s.").$microsec;
 
 	$usuario= new Usuario();
 	$eliminarUsuario= $usuario->eliminarUsuario($id_sesion_update_aud,$fecha_update,$idUsuario);
 
 	$response= array();
-	// $getUsuario= $usuario->getUsuario($idUsuario);
-	// $response['codpersona']=$getUsuario->id_persona;
-	
-	// $idpersona= $response['codpersona'];
 
-	// $persona= new Persona();
-	// $eliminarPersona= $persona->eliminarPersona($id_sesion_update_aud,$fecha_update,$idpersona);
 	$response['msj']="Se eliminó con exito";
 	$response['tipo']="success";
 	
@@ -49,7 +35,7 @@ function _habilitarUsuarioAction(){
 
    	$idUsuario=$_POST['codusuario'];
 	$id_sesion_update_aud=  $_SESSION['idsesion'];
-	list($secs, $microsec) = explode('.',  microtime(true)); //se extrae los microsegundos
+	list($secs, $microsec) = explode('.',  microtime(true)); 
 	$fecha_update=date("Y-m-d H:i:s.").$microsec;
 
 	$usuario= new Usuario();
@@ -69,9 +55,7 @@ function _listarUsuarioAction(){
 	$lusuario=$usuario->listarUsuarios();
   require 'view/registro/tabUsuarios.php';
 }
-/**
- * fin de modificacion 02/05/2019
- */
+
 function _registrarUsuarioAction(){
 	$id_persona = $_POST['txtIdPersona'];
 	$dni = $_POST['txtDNI'];

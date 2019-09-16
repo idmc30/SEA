@@ -11,15 +11,6 @@ class Usuario{
         $this->objPdo = new Conexion(1);
     }
 
-/**
- * 1.- Diego Valdera 11/04/2019 metodo para Usuario
- * 2.-idmc 02/05/2019 se agrego los metodo eliminar usuario y getusuario
- */
-
- /**
-  * agregado el 21/06/2019 idmc
-    modificado el 23/06/2019 idmc
-  */
 
     public function updatetUsuario($idrolusuario,$idsesionupdateaud,$idusuario){
 
@@ -67,9 +58,6 @@ class Usuario{
         $resultado = $sentence->fetchAll(PDO::FETCH_OBJ);
         return $resultado;
     }
-
-/**fin */
-
 
  public function listarUsuariosParaPonentes() {
         $stmt = $this->objPdo->prepare("SELECT * FROM sea.usuario u INNER JOIN sea.persona p ON p.id_persona = u.id_persona WHERE u.estado_usuario LIKE 'A'");
@@ -133,10 +121,6 @@ class Usuario{
             $resultado = $sentence->fetchAll(PDO::FETCH_OBJ);
             return $resultado;
        }
-
-/**
- * diego
- */
 
     public function registrarUsuarioManual($contrasena, $dni_usuario, $id_persona, $id_sesion_registro_aud){
 

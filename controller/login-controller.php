@@ -1,9 +1,7 @@
 <?php
 session_start();
 require 'model/mUsuario.php';
-/** 
- * 01.- Diego Valdera 16/04/2019 Acceso al sistema
-*/
+
 function _formAction(){
 	require 'view/usuario/vLogin.php';
 }

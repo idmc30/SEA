@@ -1,9 +1,6 @@
 <?php
 require_once 'conexion.php';
-/**
- * 01.- Diego Valdera 11/04/2019 metodo para Evento
- * 02.- idmc modificado el 30/04/2019 se agrego sentence y el return 
- */
+
 class TipoParticpante{
     private $objPdo;
 	function __construct(){

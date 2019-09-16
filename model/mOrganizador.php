@@ -1,9 +1,6 @@
 <?php
 require_once 'conexion.php';
-/**
-* 
-* 01.- idmc 30/04/2019 modificado se agrego sentence y return a los metodo
-*/
+
 class Organizador{
 
 	private $objPdo;
@@ -12,9 +9,6 @@ class Organizador{
 		$this->objPdo = new Conexion(1);
 	}
 
-/**
- * idmc 08/95/2019 se agrego estos metodos para usalor en evento listado por fecha
- */
 		public function listarOrganizadoresxEvento($evento_id){
 			$sentence = $this->objPdo->prepare("SELECT * FROM sea.evento_participantes ep
 																					INNER JOIN sea.organizador o ON  ep.id_organizador=o.id_organizador
@@ -37,9 +31,6 @@ class Organizador{
 			$resultado = $sentence->fetchAll(PDO::FETCH_OBJ);
 			return $resultado[0]->total_organizadores;
 		}
-/**
- * fin de idmc 08/95/2019 se agrego estos metodos para usalor en evento listado por fecha
- */
 
 	public function insertarOrganizador($telefono,$anexo,$nombre,$idtipoorganizador,$idsesionregistroaud,$fecharegistroaud){
 
@@ -93,21 +84,6 @@ class Organizador{
 		return $resultado[0];
 	}
 
-	// public function listarOrganizadoresxEvento($evento_id){
-	// 	$sentence = $this->objPdo->prepare('SELECT o.nombre_organizador FROM sea.evento_participantes ep 
-	// 		INNER JOIN sea.organizador o on ep.id_organizador = o.id_organizador
-	// 		WHERE ep.tipopar_id = 1 and ep.evento_id = :evento_id
-	// 		GROUP BY o.nombre_organizador');
-	// 	$sentence->execute(array( 
-	// 													'evento_id' => $evento_id
-	// 											));
-	// 	$resultado = $sentence->fetchAll(PDO::FETCH_OBJ);
-	// 	return $resultado;
-	// }
-	
-	/**
-	 * idmc 03/05/2019 se modifico el listado, par aunirlo con tipo de organizador
-	 */
 	public function listarOrganizadores() { 
 		$sentence = $this->objPdo->prepare("SELECT * FROM sea.organizador org  
 		INNER JOIN sea.tipo_organizador torg ON org.id_tipo_organizador=torg.id_tipo_organizador
@@ -116,7 +92,4 @@ class Organizador{
 		$resultado = $sentence->fetchAll(PDO::FETCH_OBJ);
 		return $resultado;
 	}
-
-
-
 }

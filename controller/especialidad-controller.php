@@ -1,23 +1,13 @@
 <?php
 
-require 'model/mEspecialidad.php'; //estoy llamando a el modelo en la rama modelo no de la rama controladores ahora voy a añadir un obtener especialidad por ID pero desde el modelo 
+require 'model/mEspecialidad.php';
 
 function _listarEspeAction(){
     
     $id_especialidad=$_POST['codigo'];
 	$especialidades = new Especialidad();
-	// $lespecialidades = $especialidades->listarEspecialidades();
 	$lespecialidades = $especialidades->obtenerEspecialidadxId($id_especialidad);
-
-	// print_r($lespecialidades); //ontas xd!
-	// echo "Hola que haces";
-
 }
-
-/*
-idmc 29-04-2019
-*/
-
 
 function _registrarAction(){
 	$especialidades = new Especialidad();

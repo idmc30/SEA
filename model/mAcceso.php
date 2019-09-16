@@ -1,9 +1,5 @@
 <?php
 require_once 'conexion.php';
-/**
-* 
-* 01.- idmc 30/04/2019 modificado se agrego sentence y return a los metodo
-*/
 class Acceso{
 
 	private $objPdo;
@@ -11,11 +7,6 @@ class Acceso{
 	function __construct(){
 		$this->objPdo = new Conexion(1);
 	}
-
-
-/**
- * idmc 18/06/2019 acceso a perfiles
- */
 
 public function estadoCheckMenuPerfil($codigorol, $codigomenu){
 	$stmt=$this->objPdo->prepare("SELECT estado_acceso
@@ -25,7 +16,7 @@ public function estadoCheckMenuPerfil($codigorol, $codigomenu){
 						 'codmenu' =>$codigomenu
 						));
 	$estadoacceso = $stmt->fetchAll(PDO::FETCH_OBJ);
-	return $estadoacceso[0]->estado_acceso;//modificar
+	return $estadoacceso[0]->estado_acceso;
 }   
 
 	public function insertarAcceso($estadoacceso,$idrolusuario,$idmenu,$idsesionregistroaud,$fecharegistroaud){
@@ -46,7 +37,6 @@ public function estadoCheckMenuPerfil($codigorol, $codigomenu){
 
 
 	public function eliminarAcceso($estado,$idrolusuario,$idmenu,$idsession,$fechaupdate) {
-		// $stmt = $this->objPdo->prepare('DELETE FROM rolmenu WHERE id_Rol = :codrol AND id_Men = :codmenu ;');
 		$stmt = $this->objPdo->prepare('UPDATE sea.acceso
 		SET estado_acceso=:estado ,id_sesion_update_aud=:idsesionupdateaud, fecha_update_aud=:fechaupdateaud
 	     WHERE id_rol_usuario=:idrolusuario and id_menu=:idmenu');
@@ -59,6 +49,5 @@ public function estadoCheckMenuPerfil($codigorol, $codigomenu){
 
 								)
 							);
-      
     }
 }

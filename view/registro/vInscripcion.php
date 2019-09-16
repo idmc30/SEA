@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-<!-- 1.- CGuerrero  04/04/2049 Lugar de Evento -->
 <?php require 'view/general/lHead.php' ?>
 <body class="sidebar-dark">
   <div class="container-scroller">
@@ -50,10 +49,6 @@
                     </div>
 
                     <div class="form-group row">
-                      <!-- <label class="col-sm-4 col-form-label"><b>DNI</b></label>
-                      <div class="col-sm-8">
-                        <input id="txtDNI" name="txtDNI" type="text" class="form-control" placeholder="DNI" maxlength="8"  onkeypress="return soloNumeros(event)"  value=""  tabindex="10">                          
-                      </div> -->
                           <label  class="col-sm-4 col-form-label"><b>Usuarios</b></label>
                           <div class="col-sm-8">
                             <select class="js-example-basic-single" style="width:100%" id="cmbusuario" name="cmbusuario">                    <option value="0" selected="selected" disabled>Seleccionar Usuario</option>                                      
@@ -63,16 +58,7 @@
                             </select>                          
                         </select>
                       </div>
-                    </div>
-                     
-                    <!-- <div class="form-group row">
-                      <label class="col-sm-4 col-form-label"><b>Nombre y Apellidos</b></label>
-                      <div class="col-sm-8">
-                        <input name="txtParticipante" id="txtParticipante" type="text" class="form-control" placeholder="Nombre y Apellidos" disabled="" />
-                      </div>
-                    </div> -->
-                    <!-- <input type="text" id="txtid" name="txtid"> -->
-                    
+                    </div>                    
                     <div class="form-group row">
                       <label  class="col-sm-4 col-form-label"><b>Tipo</b></label>
                       <div class="col-sm-8">
@@ -86,7 +72,7 @@
                       </div>
                     </div>
                     
-                    <div class="form-group row" id="estado_tipo_organizador"><!-- condicional a tipo-->
+                    <div class="form-group row" id="estado_tipo_organizador">
                       <label  class="col-sm-4 col-form-label"><b>Organizador</b></label>
                       <div class="col-sm-8">
                         <select class="js-example-basic-single" style="width:100%" id="cmborganizador" name="cmborganizador">                          
@@ -98,7 +84,7 @@
                       </div>
                     </div>
                     <br>
-                    <div class="form-group row" id="estado_certificado"><!-- condicional a evento-->
+                    <div class="form-group row" id="estado_certificado">
                     <label class="col-sm-4 col-form-label"><b>Certificado</b></label>
                     <div class="col-sm-4">
                       <div class="form-check">
@@ -142,7 +128,7 @@
                             <th>DNI</th>
                             <th>NOMBRE Y APELLIDOS</th>
                             <th>TIPO</th>
-                            <th>CERTIFICADO</th><!-- Condicional a evento -->
+                            <th>CERTIFICADO</th>
                             <th>DESINSCRIBIR</th>
                           </tr>
                         </thead>

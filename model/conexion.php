@@ -7,8 +7,6 @@ class Conexion extends PDO {
       private $type;
       private $host;
       private $cadena;
-
-//nota: en versiones de php 5.6 para adelante se debe instalar el ODBC Driver 11 for SQL Server for x86 --> https://www.microsoft.com/en-us/download/details.aspx?id=36434
     
     public function __construct($n) {
 

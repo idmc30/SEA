@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-<!-- 1.- CGuerrero  04/04/2049 Registro de Evento -->
 <?php require 'view/general/lHead.php' ?>
 
 <body class="sidebar-dark">
@@ -39,12 +38,10 @@
                         <p class="pdeteve"><?php echo strtoupper($oevento->evento_tipo_nombre) ?> &nbsp 
                           <?php if ($oevento->tipo_evento_id == 1): ?>
                           <button type="button" class="btn btn-outline-secondary btn-rounded btn-icon" data-toggle="tooltip" data-placement="top" title="" data-original-title="Añadir" id="btn_aniadir">
-                            <!-- <i class="mdi mdi-animation plus-diplo"></i> -->
                             <i class="mdi mdi-plus-circle-outline font-weight-bold ml-auto px-1 py-1 text-dark mdi-24px"></i>
                           </button>                             
                           <?php endif ?>
                           <button type="button" class="btn btn-outline-secondary btn-rounded btn-icon" data-toggle="tooltip" data-placement="top" title="" data-original-title="Añadir" id="btn_ver">
-                            <!-- <i class="mdi mdi-animation plus-diplo"></i> -->
                             <i class="mdi mdi-plus-circle-outline font-weight-bold ml-auto px-1 py-1 text-dark mdi-24px"></i>
                           </button> 
                         </p>
@@ -259,15 +256,6 @@
     <?php require'view/general/lScript.php' ?>
     <script src="assets/js/data-table.js"></script>
     <script src="js/eventos/evento_aniadir.js"></script>
- <!--    <script>
-      
-      $(document).on('click', '#btn_modulos', function(event) {
-        event.preventDefault();
-        /* Act on the event */
-        // window.location.href = 'index.php?page=evento&action=modulo&key=<?php// echo $_GET['key'] ?>';
-      });
-
-    </script> -->
 </body>
 
 </html>

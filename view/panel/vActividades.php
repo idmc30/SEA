@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
-<!-- 1.- CGuerrero  04/04/2049 Lista de Actividades -->
 <?php require 'view/general/lHead.php' ?>
 <body class="sidebar-dark">
   <div class="container-scroller">
-    <!-- 1.- CGuerrero  04/04/2049 Barra Superior -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo" href="index.php"><img src="assets/customs/imag/pjX63.png" style="width: 40px" /><b style="color: #9b9b9b">&nbspSEA</b></a><!-- Nombre completo -->
-        <a class="navbar-brand brand-logo-mini" href="index.php?page=principal&action=principal"><img src="assets/customs/imag/pjx63.png" alt="logo"/></a><!-- Logo -->
+        <a class="navbar-brand brand-logo" href="index.php"><img src="assets/customs/imag/pjX63.png" style="width: 40px" /><b style="color: #9b9b9b">&nbspSEA</b></a>
+        <a class="navbar-brand brand-logo-mini" href="index.php?page=principal&action=principal"><img src="assets/customs/imag/pjx63.png" alt="logo"/></a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
       </div>
@@ -31,7 +29,6 @@
                     </div>
                   </div>
                 </form>
-                  <!-- Inicio listado de imágenes -->
                   <div class="row portfolio-grid">
 
                     <?php if ($numero_filas): ?>
@@ -55,8 +52,6 @@
                     <?php endif ?>             
 
                   </div>
-                  <!-- Fin listado de imágenes -->
-                  <!-- inicio Paginación -->
                   <div class="row">
                     <div class="col-md-5"></div>
                     <div class="col-md-">
@@ -81,10 +76,8 @@
                         </nav>
                     </div>
                   </div>
-                  <!-- Fin Paginación -->
                 </div>
               </div>
-              <!-- Fin listado de imágenes -->
               
         
             </div>

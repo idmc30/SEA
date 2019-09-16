@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- 1.- CGuerrero  04/04/2049 Login -->
 <?php require 'view/general/lHead.php' ?>
 
 <body class="sidebar-dark">

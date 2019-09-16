@@ -22,7 +22,6 @@ function _consultarPersonaByDNIAction(){
 	}
 	header('Content-Type: application/json');
 	echo json_encode($response);
-	// echo $dni;
 }
 
 
@@ -40,16 +39,10 @@ function _registrarUsuarioAction(){
 		$persona = $objPersona->consultarPersonaByDNI($dni);
 		$usuario = $objUsuario->consultarUsuarioByID($persona);
 		if ($persona == NULL && $usuario == NULL){
-			// if ($usuario == NULL) {
 			$objPersona->registrarPersona($dni, $nombre, $ap_paterno, $ap_materno, $correo, $telefono);
 				$idpersona = $objPersona->consultarPersonaByDNI($dni);
 				$objUsuario->registrarUsuario($contrasena, $dni, $idpersona);
 				$respuesta['accion'] = "true";
-			// }
-			// else
-			// {
-			// 	$respuesta['accion'] = "Usuario ya se encuentra registrado";
-			// }
 		}
 		else
 		{

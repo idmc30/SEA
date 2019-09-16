@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-<!-- 1.- CGuerrero  04/04/2049 Registro de Evento -->
 <?php require 'view/general/lHead.php' ?>
 
 <body class="sidebar-dark">
@@ -109,7 +108,6 @@
     <script>      
       $(document).on('click', '#btn_modulos', function(event) {
         event.preventDefault();
-        /* Act on the event */
         window.location.href = 'index.php?page=evento&action=modulo&key=<?php echo $_GET['key'] ?>';
       });
     </script>

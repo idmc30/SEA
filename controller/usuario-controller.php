@@ -1,7 +1,5 @@
 <?php 
-/**
- * 01.- Irwin Morales 20/06/2019 
- */
+
 session_start();
 require 'model/mRol.php';
 require 'model/mUsuario.php';
@@ -22,7 +20,7 @@ function _estadosUsuarioAction(){
     $idusuario= $_POST['cod'];
     $accion = $_POST['action'];
     $idsession=$_SESSION['idsesion'];
-    list($secs, $microsec) = explode('.',  microtime(true)); //se extrae los microsegundos
+    list($secs, $microsec) = explode('.',  microtime(true)); 
     $fecha_update_aud=date("Y-m-d H:i:s.").$microsec;
  
     $usuario=new Usuario();
@@ -67,22 +65,16 @@ function _getUsuarioAction(){
 
     header('Content-Type: application/json');
 	echo json_encode($response);
-   
 
 }
-
 
 function _listarUsuariosROlAction(){
    
     $objUSuario = new Usuario();
     $lusuario= $objUSuario->listarUsuariosPerfil();
-    
-    // var_dump($estadousuario);
    
     require 'view/configuracion/tabUsuarios.php';
 }
-
-
 
 function _registrarUsuariosAction(){
 

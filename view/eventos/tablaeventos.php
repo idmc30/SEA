@@ -3,8 +3,7 @@
                            <tr>
                              <td><?php echo $nro++; ?></td>
                              <td><?php echo $evento->evento_nombre ?></td>
-                             <td><?php echo $evento->evento_descripcion ?></td>
-                             <!-- idmc 08/05/2019 se agrego estos metodos para contar el total de organizadores tiene cada evento -->                            
+                             <td><?php echo $evento->evento_descripcion ?></td>                            
                              <?php 
                                $totalOrganizador= $organizador->totalderOrganizadoresxEvento($evento->evento_id);
                              ?>

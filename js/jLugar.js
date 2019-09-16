@@ -9,13 +9,11 @@ function AceptarLugar() {
             .done(function(text) {
                 swal({
                     title: text,
-                    // text: 'I will close in 2 seconds.',
                     icon: 'success',
                     timer: 2000,
                     button: false
                 }).then(
                     function() {},
-                    // handling the promise rejection
                     function(dismiss) {
                         if (dismiss === 'timer') {
                             console.log('I was closed by the timer')
@@ -69,7 +67,6 @@ function verificarFormulario() {
             button: false
         }).then(
             function() {},
-            // handling the promise rejection
             function(dismiss) {
                 if (dismiss === 'timer') {
                     console.log('I was closed by the timer')
@@ -130,7 +127,6 @@ function EliminarLugar(id_lugar, estado) {
     var msj = '';
     if (estado == 'I') { msj = '¿Esta seguro de eliminar el lugar?' }
     swal({
-        // title: msj,
         text: msj,
         icon: 'warning',
         showCancelButton: true,
@@ -170,13 +166,11 @@ function ProcesoCambiarEstadoLugar(id_lugar, estado) {
         .done(function(text) {
             swal({
                 title: text,
-                // text: 'I will close in 2 seconds.',
                 icon: 'success',
                 timer: 2000,
                 button: false
             }).then(
                 function() {},
-                // handling the promise rejection
                 function(dismiss) {
                     if (dismiss === 'timer') {
                         console.log('I was closed by the timer')

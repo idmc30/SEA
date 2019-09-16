@@ -1,8 +1,6 @@
 $(document).on('change', '#cmbtipo', function(event) {
     event.preventDefault();
-    /* Act on the event */
     var nombreTipo = $('select[name=cmbtipo] :selected').text();
-    // alert(nombreTipo);
     if (nombreTipo == 'REPRESENTANTE') {
 
         $("#estado_certificado").hide("slow")
@@ -18,18 +16,10 @@ $(document).on('change', '#cmbtipo', function(event) {
 
 })
 
-
-// window.addEventListener("keyup", ValidarInscipcion);
-
-
-
-
-
 function desinscribirParticipante(codParticipanteEvento) {
 
 
     swal({
-        // title: msj,
         text: 'Esta seguro que desea desinscribir?',
         icon: 'warning',
         showCancelButton: true,
@@ -53,7 +43,6 @@ function desinscribirParticipante(codParticipanteEvento) {
             }
         }
     }).then(function(result) {
-        // console.log(result);
         if (result) {
 
             desinscribirParticipanteEvento(codParticipanteEvento);
@@ -70,7 +59,6 @@ var desinscribirParticipanteEvento = function(codParticipanteEvento) {
         },
         dataType: 'json',
         success: function(response) {
-            // console.log(response);
             swal({
                 title: response.msj,
                 icon: response.tipo,
@@ -86,15 +74,11 @@ var desinscribirParticipanteEvento = function(codParticipanteEvento) {
 
 $(document).on('change', '#cmbevento', function(event) {
         event.preventDefault();
-        /* Act on the event */
         var codEvento = $('select[name=cmbevento]').val();
-        // limpiar();
         listarInscritoxEvento(codEvento);
         consultarEstadoCertificado(codEvento);
     })
-    /** 
-     * idmc 26-04-2016 se agrego el consultar estado de cetificado por evento 
-     */
+
 var consultarEstadoCertificado = function(id) {
     var options = {
         type: 'POST',
@@ -130,11 +114,9 @@ var listarInscritoxEvento = function(idEvento) {
         },
         dataType: 'html',
         success: function(response) {
-            // console.log(response);
 
             $('#tabladt').dataTable().fnDestroy();
             $("#listadoinscritos").html(response);
-            //$('#tabladt').dataTable();
             $('#tabladt').DataTable({
                 "bLengthChange": false,
                 "lengthMenu": [10],
@@ -149,7 +131,6 @@ var listarInscritoxEvento = function(idEvento) {
 
 $(document).on('submit', '#frminscripcion', function(event) {
     event.preventDefault();
-    /* Act on the event */
 
     var formElement = document.getElementById("frminscripcion");
     var formData = new FormData(formElement);
@@ -162,11 +143,10 @@ var registrarInscripcion = function(formData) {
         type: 'POST',
         url: 'index.php?page=inscripcionManual&action=registrarInscripcion',
         data: formData,
-        processData: false, // tell jQuery not to process the data
-        contentType: false, // tell jQuery not to set contentType       
+        processData: false, 
+        contentType: false,      
         dataType: 'json',
         success: function(response) {
-            // limpiar();
             let tipo = response.tipo
             if (tipo == 'success') {
                 swal({
@@ -189,8 +169,6 @@ var registrarInscripcion = function(formData) {
     };
     $.ajax(options);
 };
-
-
 
 function ValidarInscipcion() {
     let dni = document.getElementById("cmbusuario").value;
@@ -222,7 +200,6 @@ var getUsuario = function(dni) {
                 $("#txtParticipante").val(apepaterno + ' ' + apematerno + ' ' + nombres);
             } else {
                 swal({
-                    // title: msj,
                     text: 'Este dni no se encuentra registrado.Desea Agregarlo?',
                     icon: 'warning',
                     showCancelButton: true,
@@ -246,7 +223,6 @@ var getUsuario = function(dni) {
                         }
                     }
                 }).then(function(result) {
-                    // console.log(result);
                     if (result) {
                         window.location.href = "index.php?page=inscripcionManual&action=form";
 
@@ -263,10 +239,8 @@ var getUsuario = function(dni) {
 
 
 function limpiar() {
-    // $('#cmbevento').val('0').trigger('change.select2');
     $("#txtDNI").val("");
     $("#txtParticipante").val("");
-    // $("#txtid").val("");
 
 }
 

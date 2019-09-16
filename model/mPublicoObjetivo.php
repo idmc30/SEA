@@ -1,10 +1,6 @@
 <?php
 require_once 'conexion.php';
-/**
- * 01.- Irwin Morales 10/04/2019 métodos del publico objetivo
- * 02.- Irwin Morales 13/04/2019 se modifico los metodos para agregar los id de auditoria
- * 03.- idmc 30/04/2019 modificado se agrego sentence y return a los metodo
- */
+
 class PublicoObjetivo{
            private $objPdo;
 			function __construct(){

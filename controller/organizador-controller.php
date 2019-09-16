@@ -4,10 +4,6 @@ require 'model/mOrganizador.php';
 require 'model/mTipoOrganizador.php';
 require 'model/mPersona.php';
 require 'model/mRepresentante.php';
-/* 
-   1.- Irwin Morales 09/04/2018 registro de organizador
-*/
-// $_SESSION['idsesion']=100; 
 
 function _registroAction()
 {
@@ -17,9 +13,7 @@ function _registroAction()
   $lpersona= $persona->consultarPersona() ;
 	require 'view/mantenimiento/organizador/vOrganizador.php';
 }
-/**
- * idmc 03/05/2019 
- */
+
 function _representanteAction(){
    
    $id_organizador=$_GET['idorganizador'];
@@ -31,11 +25,10 @@ function _representanteAction(){
 function _deleteRepresentanteAction(){
    
   $id_sesion_update_aud= $_SESSION['idsesion'];
-  list($secs, $microsec) = explode('.',  microtime(true)); //se extrae los microsegundos
+  list($secs, $microsec) = explode('.',  microtime(true));
   $fecha_update_aud=date("Y-m-d H:i:s.").$microsec;
   $evpar_id=$_POST['codeventoparti'];
   try {
-    //code...
     
     $representante= new Representante();
     $update= $representante->eliminarRepresentante($id_sesion_update_aud,$fecha_update_aud,$evpar_id);
@@ -52,18 +45,13 @@ function _deleteRepresentanteAction(){
   echo json_encode($response);
 }
 
-/**
- * fin de idmc 03/05/2019 
- */
-
-
 function _registrarRepresetanteAction(){
 try {
   $estadorepresentante='A';
   $idorganizador=$_POST['codorganizador'];
   $idusuario=$_POST['codusuario'];
   $idsesionregistroaud= $_SESSION['idsesion']; 
-  list($secs, $microsec) = explode('.',  microtime(true)); //se extrae los microsegundos
+  list($secs, $microsec) = explode('.',  microtime(true));
   $fechaCreate=date("Y-m-d H:i:s.").$microsec;
   
   $organizador= new Organizador();
@@ -73,7 +61,6 @@ try {
   $response['msj']="Se asigno correctamente";
   
 } catch (Exception $e) {
-  //throw $th;
   $response['tipo']="error";
   $response['msj']="No se pudo asignar";
   
@@ -97,7 +84,7 @@ function _eliminarOrganizadorAction(){
 	$id_organizador=$_POST['id'];
 	$estadoOrganizador='i';
 	$idUsuarioUpdate=$_SESSION['idsesion']; 
-	list($secs, $microsec) = explode('.',  microtime(true)); //se extrae los microsegundos
+	list($secs, $microsec) = explode('.',  microtime(true));
 	$fechaUpdate=date("Y-m-d H:i:s.").$microsec;
 	
 		 try {			
@@ -107,7 +94,6 @@ function _eliminarOrganizadorAction(){
 			 $response['tipo']="success";
 			 
 		 } catch (Exception $e) {
-			 //throw $th;
 			 $response['msj']="No se pudo eliminar";
 			 $response['tipo']="warning";
 		 }
@@ -131,7 +117,6 @@ function _getOrganizadorAction(){
 	 
 }
 
-
 function _listarOrganizadorAction(){
   
   $organizador= new Organizador();
@@ -144,7 +129,7 @@ function _registrarOrganizadorAction()
 {
  
    try {
-     list($secs, $microsec) = explode('.',  microtime(true)); //se extrae los microsegundos
+     list($secs, $microsec) = explode('.',  microtime(true));
      $telefono = (!empty($_POST['txttelefono'])) ?  $_POST['txttelefono'] : null ;
      $anexo= (!empty($_POST['txtanexo'])) ?  $_POST['txtanexo'] : null ;
      $nombre = $_POST['txtnombre'];

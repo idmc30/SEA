@@ -8,8 +8,6 @@ require_once 'model/mMenu.php';
    $total_sub_menu=0;
 ?>
 
-
-<!-- 1.- CGuerrero  04/04/2049 Menú -->
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
   <ul class="nav">
     

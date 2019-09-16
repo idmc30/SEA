@@ -39,12 +39,6 @@ function _registroAction(){
 	require 'view/eventos/vRegistroEvento.php';
 }
 
-
-
-
-/**
- * idmc 09
- */
 function _updateEstadosEventoAction(){
 
 	$id_evento = base64_decode($_POST['key']);
@@ -63,10 +57,6 @@ function _updateEstadosEventoAction(){
 
 }
 
-
-/**
- * idmc 08/05/2019 se agrego la funcion para listar organizadores por evento
- */
 function _listarOrganizadoresAction(){
 	 $id_evento= $_POST['codEvento'];
 	 
@@ -97,18 +87,16 @@ function _registrarAction(){
 	$costo_ponente_costo_evento =(!empty($_POST['costoponente'])) ? $_POST['costoponente'] : null ;
 	$costo_break_costo_evento =(!empty($_POST['costobreak'])) ? $_POST['costobreak'] : null ;
 	$costo_certificado_costo_evento = (!empty($_POST['costocertificado'])) ? $_POST['costocertificado'] : null ;
-	// $nombre = $_POST['nombre'];
 
 	$evento_comentario = '';
 
 	$foto_evento = null;
 	$fecha_reprogramacion = null;
 	$evento_estado = 1;
-	// $id_sesion_registro_aud = $_SESSION['idsesion'];
 	$id_sesion_registro_aud = $_SESSION['idsesion'];
 
-	list($secs, $microsec) = explode('.',  microtime(true)); //se extrae los microsegundos
-   	$fecha_registro_aud = date("Y-m-d H:i:s.").$microsec; //se añade microsegundos a la fh de registro
+	list($secs, $microsec) = explode('.',  microtime(true));
+   	$fecha_registro_aud = date("Y-m-d H:i:s.").$microsec;
 
 
 	$prev_hora_inicio_evento = strtotime($_POST['hora']);
@@ -134,31 +122,24 @@ function _registrarAction(){
 		if ($id_evento == true) {
 		
 		$evpar_fecha_registro = date("Y-m-d");
-		$tipopar_id = 1; //referencia a que el participante sera de tipo REPRESENTANTE
+		$tipopar_id = 1;
 
-		$evento_pertenece = $eventos->updateEventoPertenece($id_evento,$id_evento); //asignando el codigo de evento al que pertenece
+		$evento_pertenece = $eventos->updateEventoPertenece($id_evento,$id_evento);
 		
 		$registrarOrganizador = $participantes->registrarParticipantexEvento($id_evento, $representante, true, $evpar_fecha_registro, $id_sesion_registro_aud, $tipopar_id, $id_organizador);
 			
-			# definimos la carpeta destino
 		    $carpetaDestino="evento_afiches/";
 
-		    # si hay algun archivo que subir
 		    if(isset($imagen) && $imagen["name"]){
 
-		    	#verifica si la carpeta destino existe
 		    	if(file_exists($carpetaDestino) || @mkdir($carpetaDestino)){
 						
 					$origen=$imagen["tmp_name"];
 					$destino=$carpetaDestino.$id_evento.'_'.$imagen["name"];
 
-					// move_uploaded_file($origen, $destino)
 					$carga_imagen = move_uploaded_file($origen, $destino);
-
-				}
-						
+				}		
 		    }
-
 		}else{
 			$msj = 'Ocurrió un problema en el registro';
 			$tipo_msj = 'error';
@@ -173,15 +154,12 @@ function _registrarAction(){
 
 	}
 
-	//registro detalle 
-
 	if ($carga_imagen == true) {
 
 		$actualizar_imagen = $eventos->actualizarImagenEvento($destino, $id_evento);
 
 		if ($actualizar_imagen == true) {
 			
-			// print_r($especialidades);
 			$costos = new Costo();
 
 			$registrarCostos = $costos->registrarCostos($costo_ponente_costo_evento, $costo_break_costo_evento, $costo_certificado_costo_evento, $id_evento, $id_sesion_registro_aud, $fecha_registro_aud);
@@ -211,30 +189,22 @@ function _registrarAction(){
 					$tipo_msj = 'error';
 					$procede = false;
 				}
-
 			} else {
 
 				$msj = 'Ocurrió un problema al registrar costos';
 				$tipo_msj = 'error';
 				$procede = false;
-
 			}
-
-
 		}else{
-
 			$msj = 'Ocurrió un problema al cargar la imagen';
 			$tipo_msj = 'error';
 			$procede = false;
 		}
-
-
 	}else{
 		$tipo_msj = 'error';
 		$msj = 'Ocurrió un problema en el registro';
 		$procede = false;
 	}
-
 
 	$response = array();
 
@@ -283,11 +253,9 @@ function _editarAction(){
 
 	$participantes = new Participante();
 
-	$evpar_tipo = 1; //solo mostrar representantes
+	$evpar_tipo = 1;
 
 	$oparticipante = $participantes->listarParticipantesxTipo($evpar_tipo, $id_evento);
-
-	//debido a que aun registrara solo un representante por orgaizador, se tomara el indice 0
 
 	$id_organizador = $oparticipante[0]->id_organizador;
 	$id_representante = $oparticipante[0]->id_usuario;
@@ -300,7 +268,6 @@ function _editarAction(){
 
 	$oevento_fecha_final = $dia_f.'/'.$mes_f.'/'.$anio_f;	
 
-	// $hora_amp_pm = date($oevento->hora_inicio_evento);
 	$hora_amp_pm = date('h:i A', strtotime($oevento->hora_inicio_evento));
 
 
@@ -317,8 +284,6 @@ function _editarAction(){
 	}
 
 	list($repo, $imagen) = explode('/', $oevento->evento_foto);
-
-
 
 	require 'view/eventos/vEdicionEvento.php';
 }
@@ -351,11 +316,10 @@ function _actualizarAction(){
 	$eventofecha_reprogramacion = null;
 	$eventohora_reprogramacion = null;
 
-	// $id_sesion_update_aud = $_SESSION['idsesion'];
 	$id_sesion_update_aud = $_SESSION['idsesion'];
 
-	list($secs, $microsec) = explode('.',  microtime(true)); //se extrae los microsegundos
-   	$fecha_update_aud = date("Y-m-d H:i:s.").$microsec; //se añade microsegundos a la fh de registro
+	list($secs, $microsec) = explode('.',  microtime(true));
+   	$fecha_update_aud = date("Y-m-d H:i:s.").$microsec;
 
 
 	$prev_hora_inicio_evento = strtotime($_POST['hora']);
@@ -366,15 +330,9 @@ function _actualizarAction(){
 
 	$eventos = new Evento();
 
-
-	// $actualizarEvento = $eventos->actualizarEvento($id_evento, $nombre_evento, $descripcion_evento, $fecha_inicio_evento, $fecha_final_evento, $hora_inicio_evento, $hora_final_evento, $certificado_evento, $id_lugar, $id_organizador, $id_tipo_evento, $costo_certificado_publico, $cant_modulos, $id_sesion_update_aud, $fecha_update_aud);
-
 	$actualizarEvento = $eventos->actualizarEvento($nombre_evento, $descripcion_evento, $id_tipo_evento, $es_padre, $id_padre, 1, $eventofecha_inicio, $eventofecha_final, $eventohora_inicio, $eventohora_final, $eventofecha_reprogramacion, $eventohora_reprogramacion, $evento_certificado, $evento_comentario, $lugar_id, $id_sesion_update_aud, $fecha_update_aud, $costo_certificado_publico, $eventohorainicio_control, $id_evento);
 
-
 	$procede = true;
-
-
 
 	if ($imagen['tmp_name'] != null) {
 
@@ -386,20 +344,15 @@ function _actualizarAction(){
 		    unlink($oimagen_evento);
 		}
 
-
-			# definimos la carpeta destino
 		    $carpetaDestino="evento_afiches/";
 
-		    # si hay algun archivo que subir
 		    if(isset($imagen) && $imagen["name"]){
 
-		    	#verifica si la carpeta destino existe
 		    	if(file_exists($carpetaDestino) || @mkdir($carpetaDestino)){
 						
 					$origen=$imagen["tmp_name"];
 					$destino=$carpetaDestino.$id_evento.'_'.$imagen["name"];
 
-					// move_uploaded_file($origen, $destino)
 					$carga_imagen = move_uploaded_file($origen, $destino);
 
 				}
@@ -408,8 +361,7 @@ function _actualizarAction(){
 
 		}
 
-
-	    if ($carga_imagen == true) { //si la carga de imagen al repo se hizo correctamente
+	    if ($carga_imagen == true) {
 			$resubirImagen = $eventos->actualizarImagenEvento($destino, $id_evento);		    	
 	    }else{
 	    	$procede = false;
@@ -423,7 +375,6 @@ function _actualizarAction(){
 
 	    $id_costo_evento = $oIdCostoEvento->id_costo_evento;
 
-	    // $actualizarCostos = $costos->actualizarcostosEvento($id_evento, $costo_ponente_costo_evento, $costo_break_costo_evento, $costo_certificado_costo_evento, $id_sesion_update_aud, $fecha_update_aud);
 	    $actualizarCostos = $costos->actualizarcostos($id_costo_evento, $costo_ponente_costo_evento, $costo_break_costo_evento, $costo_certificado_costo_evento, $id_evento, $id_sesion_update_aud, $fecha_update_aud);
 
 	    $deleteEspecialidadesPrev = $eventos->eliminarEspecialidadesxEvento($id_evento);
@@ -455,18 +406,12 @@ function _actualizarAction(){
 	    	$tipo_msj = 'error';				
 		}
 
-		
-	
-
-
 	if ($procede = true) {
 
 		$msj = 'Evento actualizado correctamente';
 		$tipo_msj = 'success';
 
 	}
-
-
 
 	$response['msj'] = $msj;
 	$response['tipo_msj'] = $tipo_msj;
@@ -478,12 +423,11 @@ function _actualizarAction(){
 
 
 }
-	
-	//09/05/2019 idmc listado de items por evento
+
 	function _listaItemsAction(){
 
 	 $id_evento = base64_decode($_POST['key']);
-	 $id_evento_pertenece_padre= $_POST['key']; //idmc
+	 $id_evento_pertenece_padre= $_POST['key'];
 	 $id_evento_pertenece=false;
 
 	 $eventos = new Evento();
@@ -495,7 +439,7 @@ function _actualizarAction(){
 	function _listaItemsHijosAction(){
 
 		$id_evento = base64_decode($_POST['key']);
-		$id_evento_pertenece= $_POST['keyPrimerPadre']; //idmc
+		$id_evento_pertenece= $_POST['keyPrimerPadre'];
 		$id_evento_pertenece_padre= false;
  
 		$eventos = new Evento();
@@ -504,7 +448,6 @@ function _actualizarAction(){
 		require 'view/eventos/tabListadoItems.php';
 	 }
 
-	//09/05/2019 idmc listado de items por evento
 	function _itemAction(){
 
 		$id_evento = base64_decode($_GET['key']);
@@ -537,7 +480,6 @@ function _actualizarAction(){
 
 		$oevento_fecha_final = $dia_f.'/'.$mes_f.'/'.$anio_f;
 
-		// $hora_am_pm = date("G:i", strtotime($oevento->evento_hora_inicio));
 		$hora_am_pm = date('h:i a ', strtotime($oevento->evento_hora_inicio));
 
 		require 'view/eventos/vDetalleItem.php';
@@ -581,7 +523,6 @@ function _detalleAction(){
 
 	$oevento_fecha_final = $dia_f.'/'.$mes_f.'/'.$anio_f;
 
-	// $hora_am_pm = date("G:i", strtotime($oevento->evento_hora_inicio));
 	$hora_am_pm = date('h:i a ', strtotime($oevento->evento_hora_inicio));
 
 	$suma_costos = $oevento->costo_ponente_costo_evento + $oevento->costo_break_costo_evento + $oevento->costo_certificado_costo_evento;
@@ -611,13 +552,10 @@ function _listareventosAction(){
 
 	$nro =1;
 
-	//idmc 08/05/2019 se agrego el metodo para contar cuantos organizadores tiene cada evento
 	$organizador=new Organizador();
 	
-
 	require 'view/eventos/tablaeventos.php';
 	
-
 }
 
 
@@ -640,15 +578,10 @@ function _modaladditemAction(){
 	$ltipos = $eventotipos->consultarTipoEvento();
 
 	$key = base64_decode($_POST['key']);
-	// print_r($ltipos);
 
 	require 'view/eventos/vModalAniadir.php';
 }
 
-
-/**
- * idmc 09/05/2019
- */
 function _editarItemAction(){
 	
 	$id_evento = base64_decode($_POST['key']);
@@ -668,33 +601,28 @@ function _editarItemAction(){
 	$response['horainicio']=$getEvento->evento_hora_inicio;
 	$response['horafinal']=$getEvento->evento_hora_final;
 
-  
 	require 'view/eventos/vModalAniadir.php';
 }
-
-
 
 function _registrarItemAction(){
 
 	$eventos = new Evento();
 	
-
 	$tipo_evento_id = $_POST['tipo'];
 	$evento_nombre = $_POST['nombre'];
 	$evento_descripcion = $_POST['descripcion'];
 	$evento_fecha_inicio = $_POST['fecha_i'];
 	$evento_hora_inicio = $hora_inicio = (empty($_POST['hora_i'])) ? null : $_POST['hora_i']; 
 	$evento_fecha_final = $_POST['fecha_f'];
-	$evento_hora_final = $hora_fin = (empty($_POST['hora_f'])) ? null : $_POST['hora_f'];  //$_POST['hora_f'];
+	$evento_hora_final = $hora_fin = (empty($_POST['hora_f'])) ? null : $_POST['hora_f'];
 	$id_sesion_registro_aud = $_SESSION['idsesion'];
 
 	// var_dump($evento_hora_inicio);
 
 	$idEventoUpdate=base64_decode($_POST['codEventoUpdate']);
 
-			list($secs, $microsec) = explode('.',  microtime(true)); //se extrae los microsegundos
-			$fecha_registro_aud = date("Y-m-d H:i:s.").$microsec; //se añade microsegundos a la fh de registro
-			// $evento_nivel = $_POST['nivel'];
+			list($secs, $microsec) = explode('.',  microtime(true));
+			$fecha_registro_aud = date("Y-m-d H:i:s.").$microsec;
 
 			$es_padre = 'false';
 			$evento_estado = '1';
@@ -703,18 +631,16 @@ function _registrarItemAction(){
 				
 				$id_padre=base64_decode($_POST['keyupdate']);
 				$idsesion_update_aud=$_SESSION['idsesion']; 
-				list($secs, $microsec) = explode('.',  microtime(true)); //se extrae los microsegundos
+				list($secs, $microsec) = explode('.',  microtime(true));
 				$fechaupdate_aud=date("Y-m-d H:i:s.").$microsec;
-
 
 				$updateItem=$eventos->actualizarEvento($evento_nombre,$evento_descripcion,$tipo_evento_id,$es_padre,$id_padre,$evento_estado,$evento_fecha_inicio,$evento_fecha_final,$evento_hora_inicio,$evento_hora_final,$eventofecha_reprogramacion,$eventohora_reprogramacion,$evento_certificado_publico,$evento_comentario,$lugar_id,$idsesion_update_aud,$fechaupdate_aud,$evento_costo_publico,$evento_hora_inicio_control,$idEventoUpdate);
 				$response['tipo']="success";
 				$response['msj']="Se actualizó correctamente";
 
 			} else{
-				// echo "Registra";
 				$id_padre = base64_decode($_POST['key']);
-        $key_primer_padre= ($_POST['keyprimerpadre']) ? base64_decode($_POST['keyprimerpadre']) : $id_padre ; //IDMC
+        $key_primer_padre= ($_POST['keyprimerpadre']) ? base64_decode($_POST['keyprimerpadre']) : $id_padre ;
 				$oevento = $eventos->obtenerEventoxId($id_padre);
 
 	
@@ -726,24 +652,12 @@ function _registrarItemAction(){
 				$response['msj']="Se agregó correctamente";
 			}
 
-	
 	header('Content-Type: application/json');
-  echo json_encode($response);
-	
-
-
+	echo json_encode($response);
 }
 
 
 function _tablaitemsAction(){
-
-	// $key = base64_decode($_POST['key']);
-
-	// $eventos = new Evento();
-
-
-
-	// $litems = $evento->
 
 	require 'view/eventos/tablaeventos.php';;
 }
@@ -756,7 +670,6 @@ function _exportarEventosAction(){
 	list($dia_i, $mes_i, $anio_i) = explode('/', $_GET['fecha_inicial']);
 	$fecha_inicial = $anio_i.'-'.$mes_i.'-'.$dia_i;
 
-
 	list($dia_f, $mes_f, $anio_f) = explode('/', $_GET['fecha_final']);
 	$fecha_final = $anio_f.'-'.$mes_f.'-'.$dia_f;
 
@@ -768,6 +681,5 @@ function _exportarEventosAction(){
 
 	$organizador=new Organizador();
 	
-
 	require 'view/eventos/exportarEventos.php';
 }

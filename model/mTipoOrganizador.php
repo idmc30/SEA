@@ -1,8 +1,6 @@
 <?php
 require_once 'conexion.php';
-/** 
- * 01.- Irwin Morales 09/04/2019 metod para organizador
- */
+
 class TipoOrganizador{
 
         private $objPdo;

@@ -1,9 +1,6 @@
 <?php $c=1 ?>
   <?php  foreach ($lusuario as $usuario): ?>
 <?php 
- /**
-  * consultar el estado de usuario
-  */
   $usuarioEstado= $objUSuario->estadoUsuario($usuario->id_usuario);
 ?>
 
@@ -29,7 +26,6 @@
                 <input id="habilitarUsuario" name="habilitarUsuario" data-idusuario="<?php echo $usuario->id_usuario; ?>" class="estadoUsuario" type="checkbox" <?php echo $estado = ($usuarioEstado==='A') ? 'checked' : ''; ;?>>
 				<?php } ?>
           	<?php } else{ ?>
-			<!-- &nbsp&nbsp -->
       <input id="habilitarUsuario" name="habilitarUsuario" data-idusuario="<?php echo $usuario->id_usuario; ?>" class="estadoUsuario" type="checkbox" <?php echo $estado = ($usuarioEstado==='A') ? 'checked' : ''; ;?>>
           	<?php } ?>
           </td>       

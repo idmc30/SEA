@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-<!-- 1.- CGuerrero  04/04/2049 Registro de Usuario -->
 <?php require 'view/general/lHead.php' ?>
 
 <body class="sidebar-dark">
@@ -26,7 +25,6 @@
               </div>
             </div>
           </div>
-          <!-- --------------------------------------------- -->
             <br>
             <div class="row">
             <div class="col-lg-5 grid-margin stretch-card">
@@ -44,7 +42,6 @@
                             <i class="mdi mdi-account-card-details text-primary"></i>
                           </span>
                         </div>
-                        <!-- <input name="txtIdPersona" id="txtIdPersona" type="text" class="form-control" placeholder="ID Persona" value="0" hidden /> -->
                         <input name="txtIdPersona" id="txtIdPersona" type="text" class="form-control" placeholder="ID Persona" value="0" hidden />
                         <input id="txtDNI" name="txtDNI" type="text" class="form-control form-control-lg border-left-0" placeholder="DNI" maxlength="8" onkeypress="return soloNumeros(event)" autofocus="" value="" onblur="ValidarDNI(this.value)" tabindex="10">
                       </div>
@@ -136,11 +133,6 @@
                         </tr>
                       </thead>
                       <tbody id="listadousuarios">
-                          <!-- <tr>
-                            <td>01</td>
-                            <td>12345678</td>
-                            <td>Fulanio Sutano</td>
-                            <td style="text-align: center;"><a href="#" ><i class="icon-close" data-toggle="tooltip" data-placement="left" title="" data-original-title="Cancelar"></i></a></td>                           </tr> -->
                       </tbody>
                     </table>
                   </div>

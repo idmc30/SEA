@@ -1,11 +1,3 @@
-// $(document).ready(() => {
-//     var asistencia = $('select[name=cmbAsistencia]').val();
-
-
-//     listaParticipantes(idEvento);
-// });
-
-
 $("select[name=cmbevento]").change(function() {
     var idevento = $('select[name=cmbevento]').val();
     listaParticipantes(idevento);

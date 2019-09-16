@@ -1,10 +1,8 @@
-//08/05/2019 idmc 
 function modalOrganizadores(idEvento) {
 
     listarOrganizadores(idEvento);
 }
 
-//08/05/2019 idmc 
 var listarOrganizadores = function(idEvento) {
 
     var options = {
@@ -22,9 +20,6 @@ var listarOrganizadores = function(idEvento) {
     };
     $.ajax(options);
 };
-
-
-
 
 $(document).ready(function() {
     $('.fechas').datepicker({
@@ -57,26 +52,11 @@ var mostrareventos = function(fecha_inicial, fecha_final) {
     $.ajax(options);
 };
 
-
-
-
-
 $(document).on('click', '#btn_mostrar', function(event) {
     event.preventDefault();
-    /* Act on the event */
 
     var fecha_inicial = $('#fecha_inicial').val();
     var fecha_final = $('#fecha_final').val();
-
-    //comparando fechas 
-    /*primero creamos un objeto de tipo Date  como argumento el String de la fecha
-    . Cuando tengas el objeto Date ya puedes obtener el tiempo con el método getTime del objeto Date
-
-      new Date(año, mes, día, hora, minutos, segundos, milisegundos);
-     */
-
-
-    /** Format Fechas */
 
     var splitFechaInicial = fecha_inicial.split('/');
     var splitFechaFinal = fecha_final.split('/');
@@ -89,15 +69,12 @@ $(document).on('click', '#btn_mostrar', function(event) {
     var mesFechFinal = splitFechaFinal[1];
     var diaFechaFinal = splitFechaFinal[0];
 
-    //pasamos parametros a Date
     var objFechaInicial = new Date(anioFechInicial, mesFechInicial, diaFechaInicial);
     var objFechaFinal = new Date(anioFechFinal, mesFechFinal, diaFechaFinal);
 
-    //obteniendo el tiempo con el getTime
     var FechaFinal = objFechaFinal.getTime();
     var FechaInicial = objFechaInicial.getTime();
 
-    // comparando fechas 
     if (FechaFinal < FechaInicial) {
 
         swal({
@@ -122,12 +99,7 @@ $(document).on('click', '#btn_mostrar', function(event) {
         }
     }
 
-
-
-
 });
-
-
 
 function eliminar(cod) {
 
@@ -161,8 +133,6 @@ function eliminar(cod) {
             eliminarEvento(cod);
         }
     })
-
-
 }
 
 var eliminarEvento = function(cod) {
@@ -186,13 +156,10 @@ var eliminarEvento = function(cod) {
 
             mostrareventos(fecha_inicial, fecha_final);
 
-
         }
     };
     $.ajax(options);
 };
-
-
 
 $(document).ready(() => {
 

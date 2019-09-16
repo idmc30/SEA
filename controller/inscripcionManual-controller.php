@@ -1,9 +1,6 @@
 <?php 
 session_start();
-// $_SESSION['idsesion']=150;
-/**
- * 01.- Irwin Morales 24/04/2019 funciones inscripcion manual de evento
- */
+
 require 'model/mEvento.php';
 require 'model/mPersona.php';
 require 'model/mTipoParticipante.php';
@@ -29,9 +26,6 @@ function _formAction()
 	require 'view/registro/vInscripcion.php';
 }
 
-/**
- * idmc 02/05/2018 lista de participante por evento en la vista inscripcion manual
- */
 function _listarParticipantesByEventoAction(){
 	
 	$idEvento=$_POST['idevento'];
@@ -49,7 +43,7 @@ function _registrarInscripcionAction(){
 	$id_tipo_participante = $_POST['cmbtipo'];
 	$codigoOrganizador=$_POST['cmborganizador'];
 	$certificado_participante_evento = $_POST['certificado'];
-	list($secs, $microsec) = explode('.',  microtime(true)); //se extrae los microsegundos
+	list($secs, $microsec) = explode('.',  microtime(true));
   $fecha_registro=date("Y-m-d H:i:s.").$microsec;
 
 	$id_sesion_registro_aud =$_SESSION['idsesion']; 
@@ -75,7 +69,6 @@ function _registrarInscripcionAction(){
 		 $response= array();
 	
 		 $participanteEvento = new Participante();
-	// 	 $evento= new Evento();//idmc 26-04-2019
 		 
 		 $validacion= $participanteEvento->validarAsistencia($id_usuario,$id_evento);
 	
@@ -92,9 +85,9 @@ function _registrarInscripcionAction(){
 			 $response['tipo']="warning";
 	
 		}
-		 //code...
+
 	 } catch (Exception $e) {
-		 //throw $th;
+
 		 $response['msj']="No se pudo registrar";
 		 $response['tipo']="warning";
 	 }
@@ -105,9 +98,6 @@ function _registrarInscripcionAction(){
 	
 }
 
-/**
- * idmc 26-04-2019 
- */
 function _consultarEstadoCertificadoAction(){
    
    $id_evento= $_POST['id'];

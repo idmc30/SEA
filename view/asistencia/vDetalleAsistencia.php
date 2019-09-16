@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">  
-<!-- 1.- CGuerrero  04/04/2049 Detalle de Asistencia -->
 <?php require 'view/general/lHead.php' ?>
 <body class="sidebar-dark">
   <div class="container-scroller">
@@ -31,7 +30,6 @@
             <div class="card">
               <div class="card-header cardmtmheader"></div>
               <div class="col-md-12 grid-margin">
-               <!-- Inicio de filtro por evento y tipo de asistente  -->
                <br>
                 <form class="form-sample">
                   <div class="row">
@@ -89,7 +87,6 @@
                     </div>
               </div>  
                 </div> 
-              <!-- Fin de filtro por evento y tipo de asistente  -->
               <br>            
             </div>
             </div>

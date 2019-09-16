@@ -3,31 +3,21 @@ session_start();
 require 'model/mEvento.php';
 require 'model/mParticipante.php';
 
-/**
- * 01.20/04/2019 Creado por Irwin Morales para el control de la vista Principal
- * 02.20/04/2019 Creado por Diego Valdera para la inscripcion al evento
- */
-
 function _inicioAction(){
 
 	require 'view/vInicio.php';
 }
 
-
-
 function _listarEventosAction(){
 	$idUsuario= $_SESSION['idsesion'];
-
 
 	$evento= new Evento();
 	$participanteEvento = new Participante();
 	
 	$leventos= $evento->listarEventoInicio();
 
-
 	require 'view/tabInicio.php';
 }
-
 
 function _desinscribirAction(){
 
@@ -53,11 +43,10 @@ function _registrarInscripcionAction(){
 	 
 	$id_usuario = $_POST['idusu'];
 	$id_evento = $_POST['idevento'];
-	$id_tipo_participante = $asistente;//preguntar el tipo como se registra por defaul
+	$id_tipo_participante = $asistente;
 	$id_organizador = null;
-	// $certificado_participante_evento = $_POST['certificado'];
 	$certificado_participante_evento = ($_POST['certificado']=="SI") ? 'TRUE' : 'FALSE' ;
-	list($secs, $microsec) = explode('.',  microtime(true)); //se extrae los microsegundos
+	list($secs, $microsec) = explode('.',  microtime(true)); 
   $fecha_registro=date("Y-m-d H:i:s.").$microsec;
 
 	$id_sesion_registro_aud =$_SESSION['idsesion']; 
@@ -66,7 +55,6 @@ function _registrarInscripcionAction(){
 
 	$registrar = $participanteEvento->registrarParticipantexEvento($id_evento, $id_usuario, $certificado_participante_evento, $fecha_registro, $id_sesion_registro_aud, $id_tipo_participante, $id_organizador);
 	
-
 			$response['msj']="Se agrego Correctamente";
 			$response['tipo']="success";
 			header('Content-Type: application/json');
@@ -104,7 +92,6 @@ function _listarEventosInicioAction(){
 
 	require 'view/tabInicio.php';
 }
-
 
 function _listarEventosPrincipalAction(){
 

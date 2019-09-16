@@ -1,7 +1,3 @@
-/**
- * 
- */
-
 $(document).on('click', '.estadoUsuario', function() {
     let evento = $(this).is(':checked');
     let idusuario = $(this).data('idusuario');
@@ -14,7 +10,6 @@ $(document).on('click', '.estadoUsuario', function() {
         habilitarUsuario(idusuario, accion);
     }
 });
-
 
 var habilitarUsuario = function(idusu, accion) {
     var options = {
@@ -33,22 +28,13 @@ var habilitarUsuario = function(idusu, accion) {
                 icon: response.tipo,
                 allowOutsideClick: false,
             })
-
-
-
-
         }
     };
     $.ajax(options);
 };
 
 function EditUsuario(idusu) {
-
-    // $("#txtDNI").prop("disabled", true);
-    // $("#txtDNI").prop("disabled", true);
-
     getUsuarios(idusu);
-
 }
 var getUsuarios = function(idusu) {
     var options = {
@@ -80,27 +66,17 @@ var getUsuarios = function(idusu) {
             $("#txtTelefono").val(response.telef);
             $("#txtAnexo").val(response.anexo);
             $("#btnregistrarse").attr('value', 'Actualizar');
-
-
-
-
         }
     };
     $.ajax(options);
 };
 
-
-
 $(document).ready(() => {
     listarUsuarios();
 });
 
-
-
 $(document).on('submit', '#frmNuevoUsuario', function(event) {
     event.preventDefault();
-    /* Act on the event */
-
     var formElement = document.getElementById("frmNuevoUsuario");
     var formData = new FormData(formElement);
 
@@ -112,8 +88,8 @@ var registrarUsuariosPerfil = function(formData) {
         type: 'POST',
         url: 'index.php?page=usuario&action=registrarUsuarios',
         data: formData,
-        processData: false, // tell jQuery not to process the data
-        contentType: false, // tell jQuery not to set contentType       
+        processData: false,
+        contentType: false,
         dataType: 'json',
         success: function(response) {
 
@@ -128,8 +104,6 @@ var registrarUsuariosPerfil = function(formData) {
     $.ajax(options);
 };
 
-
-
 var listarUsuarios = function() {
     var options = {
         type: 'POST',
@@ -137,18 +111,13 @@ var listarUsuarios = function() {
         data: {},
         dataType: 'html',
         success: function(response) {
-            // console.log(response);
-
             $('#tabladt').dataTable().fnDestroy();
             $("#listadousuarios").html(response);
-            //$('#tabladt').dataTable();
             $('#tabladt').DataTable({
                 "bLengthChange": true,
                 "lengthMenu": [10],
                 "language": spanish_datatable
             });
-
-
         }
     };
     $.ajax(options);

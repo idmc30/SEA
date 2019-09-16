@@ -1,7 +1,3 @@
-// function ponente(id_evento) {
-//     $("#txtIdEventoPonente").val(id_evento);
-// }
-
 function reprograma(id_evento, nombreEvento) {
     $("#txtIdEventoReprograma").val(id_evento);
     $('#nombreEvento').html(nombreEvento);
@@ -30,13 +26,11 @@ function RegistrarPonente() {
         }else{
             swal({
                 title: text,
-                // text: 'I will close in 2 seconds.',
                 icon: 'success',
                 timer: 2000,
                 button: false
             }).then(
                 function() {},
-                // handling the promise rejection
                 function(dismiss) {
                     if (dismiss === 'timer') {
                         console.log('I was closed by the timer')
@@ -75,13 +69,11 @@ function Reprograma() {
     .done(function(text) {
         swal({
             title: text,
-            // text: 'I will close in 2 seconds.',
             icon: 'success',
             timer: 2000,
             button: false
         }).then(
             function() {},
-            // handling the promise rejection
             function(dismiss) {
                 if (dismiss === 'timer') {
                     console.log('I was closed by the timer')

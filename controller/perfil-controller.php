@@ -4,10 +4,6 @@ require 'model/mPersona.php';
 require 'model/mUsuario.php';
 require 'model/mModalidadContractual.php';
 require 'model/mEvento.php';
-// require 'model/mParticipanteEvento.php';
-/** 
- * 01.- Diego Valdera 09/04/2019 registro y edicion de perfil
-*/
 
 function _perfilAction(){
 
@@ -41,8 +37,6 @@ function _perfilAction(){
 	$eventoParticipante = $objEvento->consultarParticipanteByID($id_usuario_login);
 	$cantidadAsistencia = $objEvento->cantidadAsistenciaByID($id_usuario_login);
 	$cantidadCertificado = $objEvento->cantidadCertificadoByID($id_usuario_login);
-	// var_dump($id_usuario_login);
-
 	require 'view/usuario/vPerfil.php';
 }
 

@@ -1,7 +1,3 @@
-/** 
- * 021.-DValdera 18/04/2019  
- */
-
 $(document).ready(() => {
     document.getElementById("txtDNI").readOnly = true;
     document.getElementById("txtProfesion").readOnly = true;
@@ -69,7 +65,7 @@ function GuardarPerfil() {
 function VerificarDNI(term) {
     var options = {
         type: 'GET',
-        url: "http://172.17.128.37/ws_pj/index.php?page=reniec&action=consultarxdni",
+        url: "http://172.17.128.37:8043/ws_pj/index.php?page=reniec&action=consultarxdni",
         data: { 'term': term },
         dataType: 'json',
         success: function(response) {
@@ -122,7 +118,6 @@ function RegistrarPerfil() {
             }
         })
         .done(function(text) {
-            // if(text.substring(0,2) =="Pe"){
             swal({
                     title: text,
                     icon: 'success',
@@ -130,13 +125,12 @@ function RegistrarPerfil() {
                     button: false
                 }).then(
                     function() {},
-                    // handling the promise rejection
+
                     function(dismiss) {
                         if (dismiss === 'timer') {
                             console.log('I was closed by the timer')
                         }
                     }
                 )
-                // }
         });
 }

@@ -1,9 +1,3 @@
-/** 
- * 01.-idmc 10/04/2019  
- */
-
-
-
 function eliminar(cod) {
 
     swal({
@@ -28,7 +22,6 @@ function eliminar(cod) {
                 visible: true,
                 className: "btn btn-primary",
                 closeModal: true
-
             }
         }
     }).then(function(result) {
@@ -36,8 +29,6 @@ function eliminar(cod) {
             eliminarPublicoObjetivo(cod);
         }
     })
-
-
 }
 
 
@@ -94,12 +85,6 @@ var getPublicoObjetivo = function(cod) {
     $.ajax(options);
 };
 
-
-
-
-
-
-
 $(document).ready(() => {
     listarPublicoObjetivo();
 
@@ -127,27 +112,19 @@ var listarPublicoObjetivo = function() {
 
 $(document).on('submit', '#frmPublicoObjetivo', function(event) {
     event.preventDefault();
-    /* Act on the event */
-    // $.validator.setDefaults({
-    //     submitHandler: function() {
-    //         // alert("aaaa");
-    //     }
-    // });
     var formElement = document.getElementById("frmPublicoObjetivo");
     var formData = new FormData(formElement);
 
     registrarPublicoObjetivo(formData);
 });
 
-
-
 var registrarPublicoObjetivo = function(formData) {
     var options = {
         type: 'POST',
         url: 'index.php?page=publicoObjetivo&action=registrarPublicoObjetivo',
         data: formData,
-        processData: false, // tell jQuery not to process the data
-        contentType: false, // tell jQuery not to set contentType		
+        processData: false,
+        contentType: false,	
         dataType: 'json',
         success: function(response) {
             limpiar();
@@ -178,9 +155,6 @@ function limpiar() {
     $("#textareadescripcion").val("");
     $("#txtidpublicoobjetivo").val("");
 }
-
-
-
 
 $(document).ready(() => {
 

@@ -1,4 +1,3 @@
-<!-- 1.- CGuerrero  04/04/2049 Head -->
 <head>
   <title>SEA</title>
   <meta charset="utf-8">

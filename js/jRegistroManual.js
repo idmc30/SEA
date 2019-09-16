@@ -1,12 +1,6 @@
-/**
- * idmc 02/05/2019
- *
- */
-
 function habilitarUsuarios(idusuario) {
 
     swal({
-        // title: msj,
         text: 'Esta seguro que desea habilitar al usuario?',
         icon: 'warning',
         showCancelButton: true,
@@ -46,8 +40,6 @@ var activarUsuarios = function(idusuario) {
         },
         dataType: 'json',
         success: function(response) {
-
-            // console.log(response);
             swal({
                 title: response.msj,
                 icon: response.tipo,
@@ -55,7 +47,6 @@ var activarUsuarios = function(idusuario) {
             });
 
             listarUsuarios();
-
         }
     };
     $.ajax(options);
@@ -64,7 +55,6 @@ var activarUsuarios = function(idusuario) {
 function deshabilitarUsuarios(idusuario) {
 
     swal({
-        // title: msj,
         text: 'Esta seguro que desea deshabilitar al usuario?',
         icon: 'warning',
         showCancelButton: true,
@@ -95,7 +85,6 @@ function deshabilitarUsuarios(idusuario) {
     })
 }
 
-
 var eliminarUsuarios = function(idusuario) {
     var options = {
         type: 'POST',
@@ -105,8 +94,6 @@ var eliminarUsuarios = function(idusuario) {
         },
         dataType: 'json',
         success: function(response) {
-
-            // console.log(response);
             swal({
                 title: response.msj,
                 icon: response.tipo,
@@ -131,11 +118,8 @@ var listarUsuarios = function() {
         data: {},
         dataType: 'html',
         success: function(response) {
-            // console.log(response);
-
             $('#tabladt').dataTable().fnDestroy();
             $("#listadousuarios").html(response);
-            //$('#tabladt').dataTable();
             $('#tabladt').DataTable({
                 "bLengthChange": false,
                 "lengthMenu": [10],
@@ -147,10 +131,6 @@ var listarUsuarios = function() {
     };
     $.ajax(options);
 };
-
-
-
-
 
 function soloNumeros(e) {
     key = e.keyCode || e.which;
@@ -185,7 +165,6 @@ function ValidarDNI(term) {
             data: datax
         })
         .done(function(text) {
-            // console.log(text);
             var term = text.dni;
             if (text.respuesta != "registrado") {
                 VerificarDNI(term);
@@ -199,7 +178,6 @@ function ValidarDNI(term) {
                     button: false
                 }).then(
                     function() {},
-                    // handling the promise rejection
                     function(dismiss) {
                         if (dismiss === 'timer') {
                             console.log('I was closed by the timer')
@@ -215,7 +193,7 @@ function ValidarDNI(term) {
 function VerificarDNI(term) {
     var options = {
         type: 'GET',
-        url: "http://172.17.128.37/ws_pj/index.php?page=reniec&action=consultarxdni",
+        url: "http://172.17.128.37:8043/ws_pj/index.php?page=reniec&action=consultarxdni",
         data: { 'term': term },
         dataType: 'json',
         success: function(response) {
@@ -275,7 +253,6 @@ function AceptarUsuario() {
                     }).then(
                         function() {},
                     )
-                    // location.reload();
                 listarUsuarios();
                 LimpiarCampos();
             } else {
@@ -290,8 +267,6 @@ function AceptarUsuario() {
                             document.getElementById("txtDNI").value = "";
                         },
                     )
-                    // location.reload();
-                    // listarUsuarios();
             }
         });
 }

@@ -2,9 +2,7 @@
 <?php 
 session_start();
 require 'model/mTipoEvento.php';
-/** 
- * 01.- Diego Valdera 11/04/2019 registo de evento
-*/
+
 function _registroAction()
 {
 	$manteactivo = 'active';

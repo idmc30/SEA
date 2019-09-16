@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-<!-- 1.- CGuerrero  04/04/2049 Representante por evento de Organizador -->
 <?php require 'view/general/lHead.php' ?>
 
 <body class="sidebar-dark">
@@ -31,7 +30,6 @@
             </div>
           </div>
               <br>
-              <!-- Inicio lista de Organizadores -->
               <div class="col-lg-12 grid-margin">
                 <div class="card">
                   <div class="card-header cardmtmheader">LISTADO DE REPRESENTANTE POR EVENTO</div>
@@ -72,10 +70,8 @@
 
                   </div>
                 </div>
+              </div>           
               </div>
-              <!-- Fin lista de organizadores -->               
-              </div>
-              <!-- Fin Lista de organizadores -->
               
             </div>
           </div>

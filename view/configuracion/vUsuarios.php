@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-<!-- 1.- CGuerrero  04/04/2049 Registro de Usuario -->
 <?php require 'view/general/lHead.php' ?>
 
 <body class="sidebar-dark">
@@ -150,21 +149,8 @@
                             <input id="txtAnexo" name="txtAnexo" type="text" class="form-control form-control-lg border-left-0" placeholder="Anexo" maxlength="31" onkeypress="return soloNumeros(event)" tabindex="30">
                         </div>
                         </div>
-
-                        <!-- <div class="form-group">
-                        <label>Contraseña</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend bg-transparent">
-                            <span class="input-group-text bg-transparent border-right-0">
-                                <i class="mdi mdi-lock-outline text-primary"></i>
-                            </span>
-                            </div>
-                            <input id="txtContrasena" name="txtContrasena" type="password" class="form-control form-control-lg border-left-0" id="exampleInputPassword" placeholder="Contraseña" tabindex="40">                        
-                        </div>
-                        </div> -->
                     <br>
                     <div class="mt-3" style="text-align: center;">
-                      <!-- <button  type="submit" id="btnregistrarse" class="btn btn-inverse-info btn-fw btn-lg font-weight-medium auth-form-btn" value="Registrarse"></button> -->
                       <input type="submit"  id="btnregistrarse" class="btn btn-inverse-info btn-fw btn-lg " value="Guardar">
                     </div>
                   </form>

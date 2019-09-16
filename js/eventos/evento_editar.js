@@ -32,8 +32,8 @@ var actualizar = function(formData){
         type: 'POST',
         url:'index.php?page=evento&action=actualizar',
         data:  formData,
-        processData: false,  // tell jQuery not to process the data
-        contentType: false,  // tell jQuery not to set contentType      
+        processData: false,  
+        contentType: false,        
         dataType: 'json',
         success: function(response){
             swal({
@@ -42,7 +42,7 @@ var actualizar = function(formData){
                 icon: response.tipo_msj,                
                 allowOutsideClick : false,          
             }).then(function () {
-                // console.log('recargando....');       
+     
                 if (response.procede == true) {
                     window.location.href = response.url_redirect;
                 }
@@ -55,7 +55,6 @@ var actualizar = function(formData){
 
 $(document).on('submit', '#form_registro', function(event) {
     event.preventDefault();
-    /* Act on the event */
 
     var formElement = document.getElementById("form_registro");
     var formData = new FormData(formElement);

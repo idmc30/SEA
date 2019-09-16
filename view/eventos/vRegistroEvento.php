@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-<!-- 1.- CGuerrero  04/04/2049 Registro de Evento -->
 <?php require 'view/general/lHead.php' ?>
 <link rel="stylesheet" href="assets/customs/plugins/datepicker/css/bootstrap-datepicker.css">
 <body class="sidebar-dark">
@@ -243,12 +242,10 @@
     </div>
   </div> 
   <?php require'view/general/lScript.php' ?>
-  <!--INICIO SCRIPTS INDIVIDUALES -->
   <script src="assets/js/select2.js"></script>
   <script src="assets/js/file-upload.js"></script>
   <script src="assets/customs/plugins/datepicker/js/bootstrap-datepicker.js"></script>
   <script src="assets/customs/plugins/datepicker/locales/bootstrap-datepicker.es.min.js"></script>
-  <!-- FIN SCRIPTS INDIVIDUALES -->
   <script src="js/eventos/evento_registrar.js"></script>
 
 </body>

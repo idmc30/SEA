@@ -1,9 +1,6 @@
 <?php
 require_once 'conexion.php';
-/**
-* 
-* 01.- idmc 30/04/2019 modificado se agrego sentence y return a los metodo
-*/
+
 class Participante{
 
 	private $objPdo;
@@ -11,10 +8,7 @@ class Participante{
 	function __construct(){
 		$this->objPdo = new Conexion(1);
     }
-    
-/**
- * idmc 02/05/2019
- */
+
 public function consultarIdParticipanteEvento($idUsuario,$idEvento) {
     $stmt = $this->objPdo->prepare("SELECT evpar_id FROM sea.evento_participantes ep
     INNER JOIN sea.usuario u ON ep.id_usuario=u.id_usuario
@@ -27,10 +21,6 @@ public function consultarIdParticipanteEvento($idUsuario,$idEvento) {
     return $eventoparticipanteid[0]->evpar_id;
 }
 
-
-/**
- * 02/05/2019
- */
     public function eliminarParticipanteEvento($idsesionupdateaud,$idparticipanteevento) {
         $stmt = $this->objPdo->prepare("UPDATE sea.evento_participantes SET evpar_estado='I',id_sesion_update_aud=:idsesionupdateaud, fecha_update_aud=NOW() WHERE evpar_id=:idparticipanteevento;");
         $rows = $stmt->execute(array(
@@ -40,9 +30,6 @@ public function consultarIdParticipanteEvento($idUsuario,$idEvento) {
         return $rows;
     }
 
-/**
- * idmc 02/05/2019
- */
     public function validarAsistencia($idUsuario,$idEvento) {
         $stmt = $this->objPdo->prepare("SELECT count(*) as total FROM sea.evento_participantes ep
         INNER JOIN sea.usuario u ON ep.id_usuario=u.id_usuario
@@ -55,10 +42,6 @@ public function consultarIdParticipanteEvento($idUsuario,$idEvento) {
         return $asistencia[0]->total;
     }
 
-
-   /**
-    * idmc  se agrego el metodo para lista participante por evento 
-    */
     public function listarParticipantesxEvento($id_evento){
         $sentence=$this->objPdo->prepare("SELECT * from sea.evento_participantes ep 
             INNER JOIN sea.usuario u on ep.id_usuario = u.id_usuario
@@ -73,10 +56,6 @@ public function consultarIdParticipanteEvento($idUsuario,$idEvento) {
         return $resultado;
     }
 
-
-  /**
-    * idmc  02/05/2019 se modifico el id_particpnate por id usuario 
-    */
     public function registrarParticipantexEvento($evento_id, $participante_id, $evpar_certificado, $evpar_fecha_registro, $id_sesion_registro_aud, $tipopar_id, $id_organizador){
         $sentence = $this->objPdo->prepare("INSERT INTO sea.evento_participantes(evento_id, id_usuario, evpar_estado, evpar_certificado, evpar_fecha_registro, id_sesion_registro_aud, fecha_registro_aud, tipopar_id, id_organizador)
         	VALUES (:evento_id, :participante_id, 'A', :evpar_certificado, :evpar_fecha_registro, :id_sesion_registro_aud, NOW(), :tipopar_id, :id_organizador);");
@@ -93,9 +72,6 @@ public function consultarIdParticipanteEvento($idUsuario,$idEvento) {
         return $resultado;
     }
 
-/**
-    * idmc  02/05/2019 se modifico el id_particpnate por id usuario 
-    */
     public function listarParticipantesxTipo($evpar_tipo, $id_evento){
         $sentence=$this->objPdo->prepare("SELECT * from sea.evento_participantes ep 
             INNER JOIN sea.usuario u on ep.id_usuario = u.id_usuario
@@ -109,6 +85,5 @@ public function consultarIdParticipanteEvento($idUsuario,$idEvento) {
         $resultado = $sentence->fetchAll(PDO::FETCH_OBJ);
         return $resultado;
     }
-
 
 }

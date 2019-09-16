@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-<!-- 1.- CGuerrero  04/04/2049 Tipo evento de Evento -->
 <?php require 'view/general/lHead.php' ?>
 <body class="sidebar-dark">
   <div class="container-scroller">
@@ -76,26 +75,6 @@
                             </tr>
                           </thead>
                           <tbody id="tbodys">
-
-                            <!-- <tr>
-                              <td>Diplomado</td>
-                              <td>Descripción de un diplomado</td>
-                              <td class="tablamtmsaccion">
-                                <i class="icon-pencil"></i>
-                                &nbsp
-                                <i class="icon-trash"></i>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Foro</td>
-                              <td>Descripción de un foro</td>
-                              <td class="tablamtmsaccion">
-                                <i class="icon-pencil"></i>
-                                &nbsp
-                                <i class="icon-trash"></i>
-                              </td>
-                            </tr> -->
-
                           </tbody>
                         </table>
                       </div>

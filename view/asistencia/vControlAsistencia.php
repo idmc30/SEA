@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
-<!-- 1.- CGuerrero  04/04/2049 Control de Asistencia -->
+
 <?php require 'view/general/lHead.php' ?>
 <body class="sidebar-dark">
   <div class="container-scroller">
@@ -40,7 +40,6 @@
                   </div>   
                 </div>
                 </div>
-                <!-- Inicio de Verificación de asistente -->
                 <div class="ctrlasistencia"><br><b><?php echo strtoupper($evento->evento_nombre) ?></b><br></div><br>
                 <div class="row"> 
                   <div class="col-lg-4">
@@ -101,9 +100,7 @@
                   </div>
 
                 </div>
-                <!-- Fin de Verificación de asistente -->
                 <hr class="hrdivision" />
-                <!-- Inicio de tabla listado de Asistentes -->
                 <div class="card-body">
                   <br>  
                   <div class="table-responsive">
@@ -125,9 +122,6 @@
                     </table>
                   </div>
                 </div>
-                <!-- Fin de tabla listado de Asistentes -->
-
-                <!-- INICIO DE MODAL PERMISOS-->
                 <div class="modal fade" id="permisos" role="dialog" aria-labelledby="exampleModalLabel-2" aria-hidden="true">
                   <div class="modal-dialog" role="document">
                     <form class="form-sample" id="frmPermiso" name="frmPermiso">
@@ -158,7 +152,6 @@
                     </form>
                   </div>
                 </div>
-              <!-- FIN DE MODAL PERMISOS-->
               </div>
             </div>
           </div>
@@ -169,7 +162,6 @@
     </div>
   </div> 
   <?php require'view/general/lScript.php' ?>
-<!-- //Data table -->
   <script src="assets/js/data-table.js"></script>
   <script src="assets/customs/plugins/datatable/spanish_datatable.js"></script>
   <script>

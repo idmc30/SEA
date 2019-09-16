@@ -1,7 +1,5 @@
 <?php 
-/**
- * 01.- Irwin Morales 10/04/2019 funciones para publico objetivo
- */
+
 session_start();
 require 'model/mPublicoObjetivo.php';
 
@@ -14,7 +12,7 @@ function _eliminarPublicoObjetivoAction(){
 	$id_publico_objetivo=$_POST['id'];
 	$estadoPuObj='I';
 	$idUsuarioUpdate=$_SESSION['idsesion']; 
-	list($secs, $microsec) = explode('.',  microtime(true)); //se extrae los microsegundos
+	list($secs, $microsec) = explode('.',  microtime(true));
 	$fechaUpdate=date("Y-m-d H:i:s.").$microsec;
 	$response = array();
 		 try {			
@@ -24,7 +22,6 @@ function _eliminarPublicoObjetivoAction(){
 			 $response['tipo']="success";
 			 
 		 } catch (Exception $e) {
-			 //throw $th;
 			 $response['msj']="No se pudo eliminar";
 			 $response['tipo']="warning";
 		 }
@@ -50,7 +47,7 @@ function _registrarPublicoObjetivoAction(){
 	$_SESSION['idsesion'];
    $nombre=$_POST['txtnombre'];
    $descripcion=$_POST['textareadescripcion'];
-   list($secs, $microsec) = explode('.',  microtime(true)); //se extrae los microsegundos
+   list($secs, $microsec) = explode('.',  microtime(true));
    
    $response = array();
    $publicoObjetivo= new PublicoObjetivo();
@@ -73,7 +70,7 @@ function _registrarPublicoObjetivoAction(){
 				}
 				
 		} catch (Exception $e) {
-			// throw $th;
+
 			$response['msj']="No se pudo registrar";
 			$response['tipo']="warning";
 		}

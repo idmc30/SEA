@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">  
-<!-- 1.- CGuerrero  04/04/2049 Listado de eventos Activos para cotrol de Asistencia -->
 <?php require 'view/general/lHead.php' ?>
 <body class="sidebar-dark">
   <div class="container-scroller">
@@ -31,7 +30,6 @@
             <div class="card">
               <div class="card-header cardmtmheader"></div>
               <div class="col-md-12 grid-margin">
-               <!-- Inicio de filtro por evento y tipo de asistente  -->
                <br>
                 <div class="card-body" style="font-size: 0rem;">
                   <div class="row">
@@ -100,8 +98,6 @@
               <br>              
             </div>
             </div>
-
-              <!-- INICIO DE MODAL REPROGRAMAR-->
                 <div class="modal fade" id="reprogramar" name="reprogramar" role="dialog" aria-labelledby="exampleModalLabel-2" aria-hidden="true">
                   <div class="modal-dialog" role="document">
                     <form class="form-sample" id="frmReprograma" name="frmReprograma">
@@ -150,9 +146,6 @@
                   </form>
                   </div>
                 </div>
-              <!-- FIN DE MODAL REPROGRAMAR-->
-                
-              <!-- INICIO DE MODAL CANCELAR-->
                 <div class="modal fade" id="cancelar" role="dialog" aria-labelledby="exampleModalLabel-2" aria-hidden="true">
                   <div class="modal-dialog" role="document">
                     <form class="form-sample" id="frmCancelar" name="frmCancelar">
@@ -176,7 +169,6 @@
                   </form>
                   </div>
                 </div>
-              <!-- FIN DE MODAL CANCELAR-->
         </div>
         
         <?php require'view/general/vFooter.php' ?>        

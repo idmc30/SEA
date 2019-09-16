@@ -28,9 +28,6 @@ class Especialidad {
         return $resultado;
     }
 
-    //porfa vean que la identacion esta presente, dentro de public esta $sentence
-    //y termina con el return 
-
     public function listarEspecialidadesEvento($id_evento){
         $sentence = $this->objPdo->prepare("SELECT * FROM sea.especialidad_evento ee INNER JOIN sea.especialidad e on ee.id_especialidad = e.id_especialidad WHERE ee.id_evento = :id_evento;");
         $sentence->execute(array('id_evento' => $id_evento ));
@@ -39,7 +36,7 @@ class Especialidad {
     }
 
 
-    public function obtenerEspecialidadxId($id_especialidad){ // aqui el que hace el modelo tiene libertad para llamarlo como quiera, pero es recomendable que sea con e nombre igual al de las columnas de la tabla.
+    public function obtenerEspecialidadxId($id_especialidad){ 
         $sentence = $this->objPdo->prepare("SELECT * FROM sea.especialidad e WHERE e.id_especialidad = :id_especialidad");
         $sentence->execute(array(
                                 'id_especialidad' => $id_especialidad, 

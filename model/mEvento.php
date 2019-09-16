@@ -1,7 +1,4 @@
 <?php
-/**
- * modelos de eventos idmc 30/04/2019
- */
 require_once 'conexion.php';
 
 class Evento {
@@ -12,9 +9,7 @@ class Evento {
 
         $this->objPdo = new Conexion(1);
     }
-/**
- * idmc 26/06/2019
- */
+
 public function listarEventoInicio(){
     $sentence=$this->objPdo->prepare("SELECT*FROM sea.eventos e
     INNER JOIN sea.evento_estados ees ON e.evento_estado=ees.evento_estado_id 
@@ -26,8 +21,6 @@ public function listarEventoInicio(){
     $resultado = $sentence->fetchAll(PDO::FETCH_OBJ);
     return $resultado;
 }
-
- /*@DVALDERA*/
 
   public function consultarEventoPertenece($idEvento){
     $stmt = $this->objPdo->prepare("SELECT evento_pertenece FROM sea.eventos where evento_id = :idEvento");
@@ -65,12 +58,6 @@ public function listarEventosActivos() {
     $eventoActivo = $stmt->fetchAll(PDO::FETCH_OBJ);
     return $eventoActivo;
 }
-// public function listarEventosActivos() {
-//     $stmt = $this->objPdo->prepare("SELECT * FROM sea.eventos WHERE evento_estado IN (1,2,4)ORDER BY evento_id ASC");
-//     $stmt->execute();
-//     $eventoActivo = $stmt->fetchAll(PDO::FETCH_OBJ);
-//     return $eventoActivo;
-// }
 
 public function consultarAsistenteByDNI($dni, $idEvento) {
     $stmt = $this->objPdo->prepare("SELECT evpar_id FROM sea.evento_participantes ep INNER JOIN sea.usuario u ON u.id_usuario = ep.id_usuario WHERE ep.evento_id = :idEvento AND ep.tipopar_id = 3 AND ep.evpar_estado LIKE 'A' AND u.dni_usuario LIKE :dni");
@@ -151,13 +138,6 @@ public function consultarEventoByID($evento_id) {
     $evento = $stmt->fetchAll(PDO::FETCH_OBJ);
         return $evento[0];
 }
-/*@DVALDERA*/
-
-/**
- * @idmc
- */
-
- //update evento al que pertenece 27/05/2019
  
  public function updateEventoPertenece($eventopertenece,$idEvento) {
     $stmt = $this->objPdo->prepare("UPDATE sea.eventos  SET  evento_pertenece=:eventopertenece   WHERE evento_id=:idEvento ");
@@ -168,10 +148,7 @@ public function consultarEventoByID($evento_id) {
     $update = $stmt->fetchAll(PDO::FETCH_OBJ);
     return $update;
 }
-    
-/**
- * 09/05/2019 cambiar de estado a  eventos  puede ser eliminado o cancelado o reprogramado
- */
+
 public function eliminarEvento($estadoEvento,$idEvento) {
     $stmt = $this->objPdo->prepare("UPDATE sea.eventos SET  evento_estado=:estadoEvento WHERE evento_id=:idEvento");
     $stmt->execute(array(
@@ -182,9 +159,6 @@ public function eliminarEvento($estadoEvento,$idEvento) {
     return $update;
 }
 
-/**
- * 09/05/2019 idmc listado de eventos hijos por evento 
- */
     public function listarItemsxEvento($idEvento) {
         $stmt = $this->objPdo->prepare("SELECT*FROM sea.eventos e
         INNER JOIN sea.evento_estados  ev ON e.evento_estado=ev.evento_estado_id
@@ -197,11 +171,6 @@ public function eliminarEvento($estadoEvento,$idEvento) {
         return $lItems;
     }
 
-
-
-    /**
-     * 07/05/2018 listado de mis eventos
-     */ 
     public function listarMisEventos($idUsuario) {
         $stmt = $this->objPdo->prepare("SELECT*FROM sea.evento_participantes pe
         INNER JOIN sea.eventos e ON pe.evento_id=e.evento_id
@@ -217,10 +186,6 @@ public function eliminarEvento($estadoEvento,$idEvento) {
         return $lmisevento;
     }
 
-
-    /**
-     * 07/05/2018 idmc busqueda de eventos en el listado de vista de inicio
-     */
     public function buscarEventos($inicio,$search) {
         $stmt = $this->objPdo->prepare("SELECT*FROM sea.eventos e
         INNER JOIN sea.evento_estados  ev ON e.evento_estado=ev.evento_estado_id
@@ -236,9 +201,6 @@ public function eliminarEvento($estadoEvento,$idEvento) {
         return $levento;
     }
 
-    /**
-     * 07/05/2018 idmc listado de evento en el vista de inicio de sea
-     */
     public function listarEventosInicio($inicio) {
         $stmt = $this->objPdo->prepare("SELECT*FROM sea.eventos e
         INNER JOIN sea.evento_estados  ev ON e.evento_estado=ev.evento_estado_id
@@ -251,9 +213,7 @@ public function eliminarEvento($estadoEvento,$idEvento) {
         $levento = $stmt->fetchAll(PDO::FETCH_OBJ);
         return $levento;
     }
-    /**
-     * 06/05/2019 idmc listado de eventos en portada con limit 
-     */
+
     public function listarEventoPortada(){
         $sentence=$this->objPdo->prepare("SELECT*FROM sea.eventos e
         INNER JOIN sea.evento_estados ees ON e.evento_estado=ees.evento_estado_id 
@@ -405,14 +365,11 @@ public function eliminarEvento($estadoEvento,$idEvento) {
         return $resultado;
     }
 
-/**
- * idmc 05/05/2019 se modifico el listado de eventos por que se agregro un campo mas de nivel
- */
     public function listarEvento(){
         $sentence=$this->objPdo->prepare("SELECT*FROM sea.eventos e
         INNER JOIN sea.evento_estados ees ON e.evento_estado=ees.evento_estado_id 
         INNER JOIN sea.evento_tipos et ON e.tipo_evento_id=et.evento_tipo_id 
-        WHERE --evento_nivel=1 AND 
+        WHERE 
         evento_estado_nombre in ('GENERADO','REPROGRAMADO','EN CURSO')
         ORDER BY evento_id DESC ");
         $sentence->execute();
@@ -422,7 +379,7 @@ public function eliminarEvento($estadoEvento,$idEvento) {
   
 
 
-    public function obtenerEventoxId($id_evento){ // aqui el que hace el modelo tiene libertad para llamarlo como quiera, pero es recomendable que sea con e nombre igual al de las columnas de la tabla.
+    public function obtenerEventoxId($id_evento){ 
         $sentence = $this->objPdo->prepare("SELECT * FROM sea.eventos e 
           LEFT JOIN sea.costo_evento ce on e.evento_id = ce.id_evento
           INNER JOIN sea.evento_tipos et on e.tipo_evento_id = et.evento_tipo_id

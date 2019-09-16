@@ -1,6 +1,6 @@
 $(document).on('change', '#certificado', function(event) {
     event.preventDefault();
-    /* Act on the event */
+
     let certificado = $(this).val();
 
     if (certificado == 'no') {
@@ -9,11 +9,7 @@ $(document).on('change', '#certificado', function(event) {
         $("#div_costo_certificado").show("slow");
     }
 
-
-
 })
-
-
 
 $(document).ready(function() {
     $('.fechas').datepicker({
@@ -24,7 +20,6 @@ $(document).ready(function() {
     $('#timepicker-example').datetimepicker({
         format: 'LT'
     });
-
 
     $('.moneda').inputmask({
         alias: "currency",
@@ -47,20 +42,17 @@ var registrar = function(formData) {
         type: 'POST',
         url: 'index.php?page=evento&action=registrar',
         data: formData,
-        processData: false, // tell jQuery not to process the data
-        contentType: false, // tell jQuery not to set contentType      
+        processData: false, 
+        contentType: false,      
         dataType: 'json',
         success: function(response) {
             swal({
-                // title: '',
-                // html: response.msj,
-                // type: response.tipo_msj,
+
                 title: '',
                 text: response.msj,
                 icon: response.tipo_msj,
                 allowOutsideClick: false,
-            }).then(function() {
-                // console.log('recargando....');       
+            }).then(function() {    
                 if (response.procede == true) {
                     window.location.href = response.url_redirect;
                 }
@@ -73,7 +65,6 @@ var registrar = function(formData) {
 
 $(document).on('submit', '#form_registro', function(event) {
     event.preventDefault();
-    /* Act on the event */
 
     var formElement = document.getElementById("form_registro");
     var formData = new FormData(formElement);
@@ -89,13 +80,6 @@ $(document).on('submit', '#form_registro', function(event) {
     var fecha_inicial = $('#fechainicioevento').val();
     var fecha_final = $('#fechafinevento').val();
 
-    //comparando fechas 
-    /*primero creamos un objeto de tipo Date  como argumento el String de la fecha
-    . Cuando tengas el objeto Date ya puedes obtener el tiempo con el método getTime del objeto Date
-     */
-
-    /** Format Fechas */
-
     var splitFechaInicial = fecha_inicial.split('/');
     var splitFechaFinal = fecha_final.split('/');
 
@@ -107,15 +91,12 @@ $(document).on('submit', '#form_registro', function(event) {
     var mesFechFinal = splitFechaFinal[1];
     var diaFechaFinal = splitFechaFinal[0];
 
-    //pasamos parametros a Date
     var objFechaInicial = new Date(anioFechInicial, mesFechInicial, diaFechaInicial);
     var objFechaFinal = new Date(anioFechFinal, mesFechFinal, diaFechaFinal);
 
-    //obteniendo el tiempo con el getTime
     var FechaFinal = objFechaFinal.getTime();
     var FechaInicial = objFechaInicial.getTime();
 
-    // comparando fechas 
     if (FechaFinal < FechaInicial) {
 
         swal({
@@ -129,11 +110,7 @@ $(document).on('submit', '#form_registro', function(event) {
         registrar(formData);
     }
 
-
-
 });
-
-
 
 $(document).ready(() => {
 
@@ -151,8 +128,6 @@ $(document).ready(() => {
             hora: 'required',
             lugar: 'required',
             subir_imagen: 'required'
-
-
         },
         messages: {
             tipo_evento: 'Seleccione un tipo de Evento',
@@ -167,9 +142,6 @@ $(document).ready(() => {
             hora: 'Ingrese una hora',
             lugar: 'Seleccione un lugar',
             subir_imagen: 'Seleccione una imagen'
-
-
-
         }
     });
 

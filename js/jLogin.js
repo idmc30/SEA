@@ -53,7 +53,6 @@ function IngresoLogin() {
                         button: false
                     }).then(
                         function() {},
-                        // handling the promise rejection
                         function(dismiss) {
                             if (dismiss === 'timer') {
                                 console.log('I was closed by the timer')
@@ -69,7 +68,6 @@ function IngresoLogin() {
                     button: false
                 }).then(
                     function() {},
-                    // handling the promise rejection
                     function(dismiss) {
                         if (dismiss === 'timer') {
                             console.log('I was closed by the timer')

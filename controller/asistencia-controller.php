@@ -107,14 +107,12 @@ function _salidaAsistenciaAction()
 
 	$inscripcion = $objEvento->consultarAsistenteByDNI($dni, $idEventoPertenece);
 
-	// $salida = $objEvento->consultarAsistenteByDNI($dni, $idEventoPertenece);
 	$validarEntrada = $objControlAsistencia->consultarEntradaById($inscripcion);
 	$validarSalida = $objControlAsistencia->consultarSalidaById($inscripcion);
 
 	$ultimoRegistro = $objControlAsistencia->ultimoPermiso($validarEntrada);
 
 	$permisoEntrada = $objControlAsistencia->consultarPermisoEntrada($ultimoRegistro);
-	// $permisoSalida = $objControlAsistencia->consultarPermisoSalida($validarEntrada);
 	$permisosAsistentes = $objControlAsistencia->consultarPermisoAsistentes($validarEntrada);
 
 	if ($inscripcion) {
@@ -154,8 +152,6 @@ function _SalidaPermisoAction()
 	$idEventoPertenece = $objEvento->consultarEventoPertenece($idEvento);
 
 	$inscripcion = $objEvento->consultarAsistenteByDNI($dni, $idEventoPertenece);
-
-	// $id_participante = $objEvento->consultarAsistenteByDNI($dni, $idEventoPertenece);
 	
 	$validarEntrada = $objControlAsistencia->consultarEntradaById($inscripcion);
 	$ultimoRegistro = $objControlAsistencia->ultimoPermiso($validarEntrada);
@@ -189,7 +185,6 @@ function _EntradaPermisoAction()
 
 	$inscripcion = $objEvento->consultarAsistenteByDNI($dni, $idEventoPertenece);
 
-	// $id_participante = $objEvento->consultarAsistenteByDNI($dni, $idEventoPertenece);
 	$validarEntrada = $objControlAsistencia->consultarEntradaById($inscripcion);
 	$ultimoRegistro = $objControlAsistencia->ultimoPermiso($validarEntrada);
 	$permisoSalida = $objControlAsistencia->consultarPermiso($ultimoRegistro);
@@ -201,8 +196,6 @@ function _EntradaPermisoAction()
 				if ($permisoEntrada) {
 					echo 'El usuario ya registro su permiso entrada';
 				}else{
-					// $ultimoPermiso = $objControlAsistencia->ulitmaCantidadPermiso($validarEntrada);
-					// $cantidad_permisos = $ultimoPermiso + 1;
 					$objControlAsistencia->registrarPermisoEntrada($validarEntrada, $_SESSION['idsesion']);
 					echo 'Permiso de entrada registrado';
 				}
@@ -264,14 +257,9 @@ function _cerrarAsistenciaAction()
 
 function _listarParticipantesAction()
 {
-	// $dni = $_POST['dni'];
 	$idEvento = $_POST['idEvento'];
 
-	// $objEvento = new Evento();
 	$objControlAsistencia = new ControlAsistencia();
-	// $objEvento = new Evento();
-
-	// $idEventoPertenece = $objEvento->consultarEventoPertenece($idEvento);
 
 	$listarParticipantesAsistentes = $objControlAsistencia->listarParticipantes($idEvento);
 
@@ -343,9 +331,6 @@ function _exportarAsistentesAction(){
 	
 	$listaIncritos = $objControlAsistencia->listaInscritosEvento($idEventoPertenece);
 	$lrepresentante = $objControlAsistencia->listaRepresentanteEvento($idEventoPertenece);
-
-	// $listarParticipantesAsistentes = $objControlAsistencia->listarParticipantes($idEvento);
-
-
+	
 	require 'view/asistencia/exportarAsistentes.php';
 }

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-<!-- 1.- CGuerrero  04/04/2049 Perfil de Usuario -->
 <?php require 'view/general/lHead.php' ?>
 <body class="sidebar-dark">
   <div class="container-scroller">
@@ -14,7 +13,6 @@
             <div class="col-md-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-header cardmtmheader"></div>
-                <!-- Inicio de vista superior de perfil -->
                 <div class="row">
                   <div class="col-lg-6">
                     <br><br>
@@ -22,7 +20,7 @@
                         <img id="imagen" name="imagen" src="" alt="profile" class="img-lg rounded-circle mb-3"/>
                         <br>
                         <h3><?php echo $response['nombres'].' '.$response['appaterno'].' '.$response['apmaterno'] ?></h3>
-                        <p><b><?php echo $response['dni'] ?></b></p><!-- DNI -->
+                        <p><b><?php echo $response['dni'] ?></b></p>
                       </div>
                   </div>
                   <div class="col-lg-4">
@@ -51,9 +49,7 @@
                     </div>
                   </div>
                 </div>
-                <!-- Fin de vista superior de perfil -->
                 <hr class="hrdivision" />
-                <!-- Inicio de tabs de perfil -->
                 <div class="card-body">
                   <ul class="nav nav-tabs" role="tablist">
                     <li class="nav-item">
@@ -64,7 +60,6 @@
                     </li>
                   </ul>
                   <div class="tab-content">
-                    <!-- Inico de detalle de actividades -->
                     <div class="tab-pane fade show active" id="home-1" role="tabpanel" aria-labelledby="home-tab">
                       <?php foreach ($eventoParticipante as $participante): ?>
                         <div class="d-flex align-items-start profile-feed-item">
@@ -82,8 +77,6 @@
                         </div>
                       <?php endforeach ?>
                     </div>
-                    <!-- Fin de detalle de actividades -->
-                    <!-- Inicio de datos personales -->
                     <div class="tab-pane fade" id="profile-1" role="tabpanel" aria-labelledby="profile-tab">
                       <form class="form-sample" id="frmPerfil" name="frmPerfil">
                         <div class="row">
@@ -203,10 +196,8 @@
                         </div>
                       </form>
                     </div>
-                    <!-- Fin de datos personales -->
                   </div>
                 </div>
-                <!-- Fin de tabs de perfil -->
               </div>
             </div>
           </div>

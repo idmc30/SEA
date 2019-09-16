@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-<!-- 1.- CGuerrero  04/04/2049 Registro de Evento -->
 <?php require 'view/general/lHead.php' ?>
 <style type="text/css">
   .bootstrap-timepicker-widget.dropdown-menu.open {
@@ -16,9 +15,6 @@
           <?php require 'view/general/vMenu.php' ?>
           <div class="main-panel">
             <div class="content-wrapper">
-
-             
-
               <div class="row">
                 <div class="col-md-12 grid-margin stretch-card">
                   <div class="col-md-6">
@@ -274,7 +270,6 @@
     <script>      
       $(document).on('click', '#btn_modulos', function(event) {
         event.preventDefault();
-        /* Act on the event */
         window.location.href = 'index.php?page=evento&action=modulo&key=<?php echo $_GET['key'] ?>';
       });
     </script>

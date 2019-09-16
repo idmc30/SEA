@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-<!-- 1.- CGuerrero  04/04/2049 Organizador de Evento -->
 <?php require 'view/general/lHead.php' ?>
 
 <body class="sidebar-dark">
@@ -29,7 +28,6 @@
               </div>
             </div>
           </div>
-               <!-- Inicio Registro de organizadores -->
               <div class="col-md-12 grid-margin">
                 <div class="card">
                   <div class="card-header cardmtmheader">REGISTRO</div>
@@ -56,7 +54,6 @@
                                 <input type="text" id="txtnombre" name="txtnombre" class="form-control" placeholder="Nombre" />
                              </div>
                              <input type="hidden" id="codorganizador" name="codorganizador">
-                             <!-- <input type="text" id="codtipoorganizador" name="codtipoorganizador"> -->
                             </div>
                           </div>
                         </div>
@@ -79,7 +76,6 @@
                       <div class="row">
                       <div class="col-md-5"></div>
                       <div class="col-md-3">
-                        <!-- <button type="submit" class="btn btn-inverse-info btn-fw">Guardar</button> -->
                         <input type="submit"  id="btnorganizador" class="btn btn-inverse-info btn-fw" value="Guardar">
                       </div>
                     </div>
@@ -87,9 +83,7 @@
                   </div>
                 </div>
               </div>
-              <!-- Fin Registro de organizadores -->
               <br><br>
-              <!-- Inicio lista de Organizadores -->
               <div class="col-lg-12 grid-margin">
                 <div class="card">
                   <div class="card-header cardmtmheader">LISTA</div>
@@ -114,10 +108,8 @@
 
                   </div>
                 </div>
+              </div>             
               </div>
-              <!-- Fin lista de organizadores -->               
-              </div>
-              <!-- Fin Lista de organizadores -->
               
             </div>
           </div>

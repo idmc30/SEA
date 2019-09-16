@@ -1,10 +1,6 @@
 <?php
 require_once 'conexion.php';
 
-/**
- * 01.- Irwin Morales 09/04/2019 metodo para Lugar
- * 02.- Diego Valdera 10/04/2019 continuacion de metodo para lugar
- */
 class TiempoAsistenciaParticipante{
     private $objPdo;
 	function __construct(){

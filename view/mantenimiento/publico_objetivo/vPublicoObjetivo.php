@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-<!-- 1.- CGuerrero  04/04/2049 Publico objetivo de Evento -->
 <?php require 'view/general/lHead.php' ?>
 <body class="sidebar-dark">
   <div class="container-scroller">
@@ -98,13 +97,6 @@
   <?php require'view/general/lScript.php' ?>
   <script src="assets/js/data-table.js"></script>
   <script src="assets/customs/plugins/datatable/spanish_datatable.js"></script>
-  <!-- <script>
-    $('#tabladt').DataTable({
-        "bLengthChange": false,
-        "lengthMenu": [10],
-        "language": spanish_datatable
-    });
-  </script> -->
   <script src="js/jPublicoObjetivo.js"></script>
 </body>
 

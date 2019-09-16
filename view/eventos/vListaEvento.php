@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">  
-<!-- 1.- CGuerrero  04/04/2049 Lista de Eventos -->
 <?php require 'view/general/lHead.php' ?>
 <body class="sidebar-dark">
   <div class="container-scroller">
@@ -34,14 +33,10 @@
                 <div class="row">
                   <div class="col-md-11"></div>
                   <div class="col-md-1">
-                    <!-- <button type="button" class="btn btn-export btn-rounded btn-icon" data-toggle="tooltip" data-placement="left" title="" data-original-title="Exportar">
-                          <i class="mdi mdi-file-excel"></i>
-                        </button> -->
                     <a id="exportarEventos" href="#" target="_blank" href="" style="color:#f39c12; font-size: 25px" data-toggle="tooltip" title="Exportar" class="btn btn-export btn-rounded btn-icon"><i class="mdi mdi-file-excel"></i></a>
                   </div>   
                 </div>               
               </div>
-              <!-- Inicio de filtro por evento y tipo de asistente  -->
               <br>
 
               <div class="card-body">
@@ -69,16 +64,12 @@
                     </div>
 
                     <div class="col-md-1">
-                      <!-- <button class="btn btn-xs btn-success" style="color: #fafafa !important;">Mostrar</button> -->
                       <button type="button" class="btn btn-dark" style="color: #fafafa !important;" id="btn_mostrar"><i class="fa fa-list-ul"></i> Mostrar</button>                      
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            
-            <!-- <hr class="hrdivision" /> -->
-                <!-- <div id="tabla_busqueda"></div> -->
                 <div class="col-lg-12 grid-margin">
                 <br>
                 <div class="card">
@@ -108,8 +99,6 @@
                   </div>
                 </div>
               </div>
-
-            <!-- Fin de filtro por evento y tipo de asistente  -->
             <br>
             <div id="modalOrganizadores"></div>            
           </div>

@@ -30,18 +30,15 @@ foreach ($listaIncritos as $inscritos):
 	}else{
 		$objSheet->getCell('I'.$num_celda)->setValue('Externo');
 	}
-		//se va convertir a minutos las horas de entrada y salida de la asistencia
 		list($horaE, $minutosE, $segundosE) = explode(':',$horaentrada);
 		list($horaS, $minutosS, $segundosS) = explode(':',$horasalida);
 
 		$minutosEntradaTotales= ($horaE * 60) + $minutosE;
 		$minutosSalidaTotales= ($horaS * 60) + $minutosS;
 		$minutosAsistidos = $minutosSalidaTotales - $minutosEntradaTotales;
-		
-		//listando los permisos para extraer la hora de salida y entrada de los permisos
+
 		$listaPermisos = $objControlAsistencia->listarPermisos($inscritos->asist_id);
 		foreach ($listaPermisos as $permisos):
-			//se esta convirtiendo a minutos la hora de salida y entrada de los permisos
 			list($horaPE, $minutosPE, $segundosPE) = explode(':',$permisos->hora_entrada_permiso);
 			list($horaPS, $minutosPS, $segundosPS) = explode(':',$permisos->hora_salida_permiso);
 
@@ -53,9 +50,8 @@ foreach ($listaIncritos as $inscritos):
 
 		$tiempoTotalAsistido = $minutosAsistidos - $suma_minutos_permiso;
 
-		//convertir de minutos a horas
-		$minutos = $tiempoTotalAsistido%60;//sacamos el resto pra obtener los minutos
-		$horas = $tiempoTotalAsistido/60; //sacamos la cantidad de horas y luego sacammos la parte entera
+		$minutos = $tiempoTotalAsistido%60;
+		$horas = $tiempoTotalAsistido/60; 
 		list($horaEntera,$horaDecimal) = explode('.',$horas);
 
 	$objSheet->getCell('K'.$num_celda)->setValue($horaEntera.' horas '.$minutos.' minutos');
@@ -91,8 +87,6 @@ foreach ($listaIncritos as $inscritos):
 	$num_celda=$num_celda+1;
 	$contador++;
 endforeach;
-
-// var_dump($tiempoTotalAsistido);
 
 $nombre_servicio = 'ListaAsistentes';
 

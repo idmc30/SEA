@@ -1,5 +1,4 @@
 $(document).on('change', '#cmbRol', function() {
-    // event.preventDefault();
     let idPerfil = $("#cmbRol").select2("val");
     listarMenus(idPerfil);
 
@@ -49,7 +48,6 @@ var insertarPerfilMenu = function(idPerfil, idmenu, accion) {
         },
         dataType: 'json',
         success: function(response) {
-            // console.log(response);
             swal({
                 title: response.msj,
                 icon: response.tipo,

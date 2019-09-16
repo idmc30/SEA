@@ -1,9 +1,6 @@
 <?php
 require_once 'conexion.php';
-/**
-* 
-* 01.- idmc 03/05/2019 se agrego el listado de representante por evento
-*/
+
 class Representante{
 
 	private $objPdo;

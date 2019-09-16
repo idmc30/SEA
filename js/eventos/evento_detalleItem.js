@@ -13,7 +13,6 @@ var modaladditemUpdate = function(key) {
         },
         dataType: 'html',
         success: function(response) {
-            // $("#btn_guardar").text("Actualizar");
             $("#btn_guardar").empty();
             $("#btn_guardar").append("some Text");
             $('#div_modales').html(response);
@@ -110,7 +109,7 @@ $(document).on('click', '#btn_guardar', function(event) {
     var hora_f = $('#hora_f').val();
     var key = $('#key_evento').val();
     var idEventoUpdate = $("#txtcodevento").val();
-    var key_update = $("#codigo_evento").val(); //$(this).data('id');
+    var key_update = $("#codigo_evento").val();
     var key_primer_padre = $("#keyEventoPrimerPadre").val()
 
     $('#modal_form').modal('hide');
@@ -147,7 +146,7 @@ var registraritem = function(key, tipo, nombre, descripcion, fecha_i, hora_i, fe
 
 
             let key = $("#codigo_evento").val();
-            //consultar el iddelprimerpadre
+           
             let primerPadreKey = $("#keyEventoPrimerPadre").val();
             listarItems(key, primerPadreKey)
 
@@ -160,7 +159,7 @@ var registraritem = function(key, tipo, nombre, descripcion, fecha_i, hora_i, fe
 
 $(document).on('click', '#btn_additem', function(event) {
     event.preventDefault();
-    /* Act on the event */
+ 
     var key = $(this).data('id');
     modaladditem(key);
 
@@ -187,9 +186,7 @@ var modaladditem = function(key) {
             });
             $('.timer').inputmask("hh:mm", {
                 placeholder: "HH:MM",
-                // insertMode: false, 
-                // showMaskOnHover: false,
-                // hourFormat: 24
+            
             });
 
 

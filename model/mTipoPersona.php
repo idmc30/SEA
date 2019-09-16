@@ -1,9 +1,6 @@
 <?php
 require_once 'conexion.php';
-/** 
- * 01.- Irwin Morales 09/04/2019 metod para organizador
- * 02--idmc 30/04/2019 modificado se agrego sentence y return a los metodo
- */
+
 class TipoPersona{
     private $objPdo;
     function __construct(){
