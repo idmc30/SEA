@@ -10,6 +10,7 @@ require 'model/mCosto.php';
 require 'model/mParticipante.php';
 require 'model/mUsuario.php';
 
+
 function _registroAction(){
 
 	$tipoeventos = new TipoEvento();
