@@ -28,9 +28,10 @@ function _consultarPersonaByDNIAction(){
 function _registrarUsuarioAction(){
 	$id_persona = $_POST['txtIdPersona'];
 	$dni = $_POST['txtDNI'];
-	list($nombre1, $nombre2, $ap_paterno, $ap_materno) = explode(' ',$_POST['txtnombreApellidos']);
-	$nombre = $nombre1.' '.$nombre2;
-	$correo = $_POST['txtCorreo'];
+	$nombre=$_POST['txtnombres'];
+	$ap_paterno=$_POST['txtapeparterno'];
+	$ap_materno=$_POST['txtapematerno'];
+    $correo = $_POST['txtCorreo'];
 	$telefono = $_POST['txtTelefono'];
 	$contrasena = $_POST['txtContrasena'];
 	$objPersona = new Persona();

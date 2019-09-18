@@ -61,14 +61,81 @@ function VerificarDNI(term) {
         url: "http://172.17.128.37:8043/ws_pj/index.php?page=reniec&action=consultarxdni",
         data: { 'term': term },
         dataType: 'json',
+        beforeSend: function() {
+            $('#exampleModal').modal({
+                backdrop: 'static',
+                keyboard: false
+            });
+            $('#exampleModal').modal('show');
+
+        },
         success: function(response) {
+            $('#exampleModal').modal('hide');
             reniec_ws = response;
             $('#txtnombreApellidos').val(response.nombres + ' ' + response.apellidopaterno + ' ' + response.apellidomaterno);
+            $("#txtnombres").val(response.nombres);
+            $("#txtapeparterno").val(response.apellidopaterno);
+            $("#txtapematerno").val(response.apellidomaterno);
         }
     };
     $.ajax(options).fail(function(jqXHR, textStatus, errorThrown) {
         reniec_ws = null;
+
+
+        let mensaje = "";
+        if (jqXHR.status === 0) {
+
+            // alert('Not connect: Verify Network.');
+            mensaje = "No se pudo conectae: Verifique la red.";
+
+            // swal("Good job!", "You clicked the button!", "warning")
+
+        } else if (jqXHR.status == 404) {
+
+            // alert('Requested page not found [404]');
+            mensaje = "Página solicitada no encontrada [404]"
+
+        } else if (jqXHR.status == 500) {
+
+            // alert('Error interno del servidor reniec [500].');
+            mensaje = "Error interno del servidor reniec [500].";
+
+        } else if (textStatus === 'parsererror') {
+
+            // alert('Requested JSON parse failed.');
+            mensaje = "Dni no encontrado";
+
+
+        } else if (textStatus === 'timeout') {
+
+            // alert('Time out error.');
+            mensaje = "Error de tiempo de espera.";
+
+        } else if (textStatus === 'abort') {
+
+            // alert('Ajax request aborted.');
+            mensaje = "Solicitud de Ajax abortada";
+
+        } else {
+
+            alert('Uncaught Error: ' + jqXHR.responseText);
+
+        }
+        $('#exampleModal').modal('hide');
+        swal({
+            title: "información!",
+            text: mensaje,
+            icon: "warning",
+            showCancelButton: true,
+            closeOnConfirm: false
+        });
+
     });
+
+
+
+
+    ;
 }
 
 $(document).ready(() => {

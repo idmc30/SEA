@@ -151,9 +151,12 @@ function soloNumeros(e) {
 };
 
 $(document).on('keyup', '#txtDNI', function(event) {
+    event.preventDefault();
     if (event.which == 13) {
         term = $('#txtDNI').val();
-        ValidarDNI(term);
+        if (term.length >= 0) {
+            ValidarDNI(term);
+        }
     }
 });
 
@@ -193,17 +196,84 @@ function ValidarDNI(term) {
 function VerificarDNI(term) {
     var options = {
         type: 'GET',
-        url: "http://172.17.128.37:8043/ws_pj/index.php?page=reniec&action=consultarxdni",
+        url: "http://7196073ed36e.sn.mynetname.net:8010/ws_pj/index.php?page=reniec&action=consultarxdni",
         data: { 'term': term },
         dataType: 'json',
+        beforeSend: function() {
+            $('#exampleModal').modal({
+                backdrop: 'static',
+                keyboard: false
+            });
+            $('#exampleModal').modal('show');
+
+        },
         success: function(response) {
+            $('#exampleModal').modal('hide');
             reniec_ws = response;
             $('#txtnombreApellidos').val(response.nombres + ' ' + response.apellidopaterno + ' ' + response.apellidomaterno);
+            $("#txtnombres").val(response.nombres);
+            $("#txtapeparterno").val(response.apellidopaterno);
+            $("#txtapematerno").val(response.apellidomaterno);
         }
     };
     $.ajax(options).fail(function(jqXHR, textStatus, errorThrown) {
         reniec_ws = null;
+
+
+        let mensaje = "";
+        if (jqXHR.status === 0) {
+
+            // alert('Not connect: Verify Network.');
+            mensaje = "No se pudo conectae: Verifique la red.";
+
+            // swal("Good job!", "You clicked the button!", "warning")
+
+        } else if (jqXHR.status == 404) {
+
+            // alert('Requested page not found [404]');
+            mensaje = "Página solicitada no encontrada [404]"
+
+        } else if (jqXHR.status == 500) {
+
+            // alert('Error interno del servidor reniec [500].');
+            mensaje = "Error interno del servidor reniec [500].";
+
+        } else if (textStatus === 'parsererror') {
+
+            // alert('Requested JSON parse failed.');
+            mensaje = "Dni no encontrado";
+
+
+        } else if (textStatus === 'timeout') {
+
+            // alert('Time out error.');
+            mensaje = "Error de tiempo de espera.";
+
+        } else if (textStatus === 'abort') {
+
+            // alert('Ajax request aborted.');
+            mensaje = "Solicitud de Ajax abortada";
+
+        } else {
+
+            alert('Uncaught Error: ' + jqXHR.responseText);
+
+        }
+        $('#exampleModal').modal('hide');
+        swal({
+            title: "información!",
+            text: mensaje,
+            icon: "warning",
+            showCancelButton: true,
+            closeOnConfirm: false
+        });
+
     });
+
+
+
+
+    ;
 }
 
 $(document).ready(() => {
@@ -246,27 +316,27 @@ function AceptarUsuario() {
         .done(function(text) {
             if (text.substring(0, 2) != "Us") {
                 swal({
-                        title: text,
-                        icon: 'success',
-                        timer: 3000,
-                        button: false
-                    }).then(
-                        function() {},
-                    )
+                    title: text,
+                    icon: 'success',
+                    timer: 3000,
+                    button: false
+                }).then(
+                    function() {},
+                )
                 listarUsuarios();
                 LimpiarCampos();
             } else {
                 swal({
-                        title: text,
-                        icon: 'warning',
-                        timer: 3000,
-                        button: false
-                    }).then(
-                        function() {
-                            document.getElementById("txtIdPersona").value = "";
-                            document.getElementById("txtDNI").value = "";
-                        },
-                    )
+                    title: text,
+                    icon: 'warning',
+                    timer: 3000,
+                    button: false
+                }).then(
+                    function() {
+                        document.getElementById("txtIdPersona").value = "";
+                        document.getElementById("txtDNI").value = "";
+                    },
+                )
             }
         });
 }

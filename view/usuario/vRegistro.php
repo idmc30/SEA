@@ -15,7 +15,6 @@
                   <b class="titulologin">SEA</b>
                 </a>
               </div>
-              
               <form class="pt-3" id="frmRegistro" name="frmRegistro">
 
                 <div class="form-group">
@@ -33,6 +32,9 @@
                 </div>
                 
                 <div class="form-group">
+                   <input type="text" id="txtnombres" name="txtnombres" hidden>
+                   <input type="text" id="txtapeparterno" name="txtapeparterno" hidden>
+                   <input type="text" id="txtapematerno" name="txtapematerno" hidden>
                   <label>Nombre y Apellidos</label>
                   <div class="input-group">
                     <div class="input-group-prepend bg-transparent">
@@ -98,6 +100,25 @@
       </div>     
     </div>   
   </div> 
+  <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Consultando Reniec</h5>
+       
+      </div>
+      <div class="modal-body" style="text-align: center;">
+      <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+        <span class="sr-only">Loading...</span>
+      </div>
+      <div class="modal-footer">
+        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div>
+  </div>
+</div>
   <?php require 'view/general/lScript.php' ?>
   <script type="text/javascript" src="js/jRegistro.js"></script>
 </body>
