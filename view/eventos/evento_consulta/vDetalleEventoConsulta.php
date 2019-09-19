@@ -213,11 +213,8 @@
                                 <td><?php echo $c; ?></td>
                                 <td><?php echo $participante->dni_persona?></td>
                                 <td><?php echo strtoupper($participante->ape_paterno.' '.$participante->ape_materno.' '.$participante->nombre_persona)?></td>
-                                <td><?php echo $participante->tipopar_nombre?></td>
-                                    <?php 
-                                         list($anio,$mes,$dia) = explode("-", $participante->evpar_fecha_registro);
-                                    ?>
-                                <td><?php echo $dia.'/'.$mes.'/'.$anio;?></td>
+                                <td><?php echo $participante->tipopar_nombre?></td>                                   
+                                <td><?php echo $participante->fecha_asistencia;?></td>
                                 
                             </tr>
                             <?php $c=$c+1; ?>

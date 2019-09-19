@@ -55,6 +55,20 @@ public function consultarIdParticipanteEvento($idUsuario,$idEvento) {
         $resultado = $sentence->fetchAll(PDO::FETCH_OBJ);
         return $resultado;
     }
+    public function listarParticipantesxEvento2($id_evento){
+        $sentence=$this->objPdo->prepare("SELECT  p.ape_paterno, p.ape_materno, p.nombre_persona, p.dni_persona, to_char( fecha_entrada_asistencia, 'DD-MM-YYYY') as fecha_asistencia ,a.hora_entrada_asistencia, a.hora_salida_asistencia, a.asist_id, a.evento_id, a.tipo_asistente, ep.evpar_certificado,tipopar_nombre from sea.evento_participantes ep 
+        INNER JOIN sea.usuario u on ep.id_usuario = u.id_usuario
+        INNER JOIN sea.persona p on p.id_persona=u.id_persona
+        INNER JOIN sea.tipo_participante tp on tp.tipopar_id=ep.tipopar_id
+                    INNER JOIN sea.asistencias a on a.evpart_id = ep.evpar_id
+        LEFT JOIN sea.organizador o on ep.id_organizador = o.id_organizador
+        WHERE ep.evento_id = :id_evento AND ep.evpar_estado='A' AND p.estado_persona='A' ORDER BY evpar_id DESC  ");
+        $sentence->execute(array(                                
+                                'id_evento' => $id_evento, 
+                            ));
+        $resultado = $sentence->fetchAll(PDO::FETCH_OBJ);
+        return $resultado;
+    }
 
     public function registrarParticipantexEvento($evento_id, $participante_id, $evpar_certificado, $evpar_fecha_registro, $id_sesion_registro_aud, $tipopar_id, $id_organizador){
         $sentence = $this->objPdo->prepare("INSERT INTO sea.evento_participantes(evento_id, id_usuario, evpar_estado, evpar_certificado, evpar_fecha_registro, id_sesion_registro_aud, fecha_registro_aud, tipopar_id, id_organizador)

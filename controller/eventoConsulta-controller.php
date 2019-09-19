@@ -47,7 +47,7 @@ function _detalleAction(){
 	$id_evento_padre= base64_decode($_GET['key']);
 	
 	$participantes= new Participante();
-	$lparticipantes = $participantes->listarParticipantesxEvento($id_evento); 
+	$lparticipantes = $participantes->listarParticipantesxEvento2($id_evento); 
 
 
 	$eventos = new Evento();
