@@ -43,7 +43,11 @@ class ControlAsistencia{
     }
 
     public function listaInscritosEvento($evento_id){
-      $stmt = $this->objPdo->prepare("SELECT p.ape_paterno, p.ape_materno, p.nombre_persona, p.dni_persona, a.hora_entrada_asistencia, a.hora_salida_asistencia, a.asist_id, a.evento_id, a.tipo_asistente, ep.evpar_certificado FROM sea.evento_participantes ep INNER JOIN sea.usuario u on u.id_usuario = ep.id_usuario INNER JOIN sea.persona p on p.id_persona = u.id_persona INNER JOIN sea.asistencias a on a.evpart_id = ep.evpar_id WHERE ep.evento_id = :evento_id AND ep.evpar_estado LIKE 'A' AND ep.tipopar_id = 3");
+      $stmt = $this->objPdo->prepare("SELECT p.ape_paterno, p.ape_materno, p.nombre_persona, p.dni_persona, to_char( fecha_entrada_asistencia, 'DD-MM-YYYY') as fecha_asistencia ,a.hora_entrada_asistencia, a.hora_salida_asistencia, a.asist_id, a.evento_id, a.tipo_asistente, ep.evpar_certificado 
+      FROM sea.evento_participantes ep 
+      INNER JOIN sea.usuario u on u.id_usuario = ep.id_usuario
+      INNER JOIN sea.persona p on p.id_persona = u.id_persona 
+      INNER JOIN sea.asistencias a on a.evpart_id = ep.evpar_id WHERE ep.evento_id =:evento_id AND ep.evpar_estado LIKE 'A' AND ep.tipopar_id = 3");
       $stmt->execute(array('evento_id' => $evento_id ));
       $listaInscritos = $stmt->fetchAll(PDO::FETCH_OBJ);
       return $listaInscritos;

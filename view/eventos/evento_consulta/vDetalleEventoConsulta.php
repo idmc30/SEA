@@ -182,43 +182,12 @@
               <br><br>
               <input type="hidden" id="codigo_evento" value="<?php echo $_GET['key']?>">
               <div class="row">                
-                <div class="col-md-6 grid-margin stretch-card">
+            
+                <div class="col-md-12 grid-margin stretch-card">
                   <div class="card">
                     <div class="card-header cardmtmheader">
                       <div class="row">
-                        <div class="col-md-10">ITEMS</div><br>
-                        <div class="col-md-1">
-                          <!-- <button type="button" class="btn btn-export btn-rounded btn-icon" data-toggle="tooltip" data-placement="left" title="" data-original-title="Añadir Items" id="btn_additem" data-id="<?php echo $_GET['key'] ?>">
-                            <i class="mdi mdi-plus"></i>
-                          </button> -->
-                        </div>   
-                    </div>
-                    </div>
-                    <div class="card-body">
-                    <br>               
-                    <div  class="table-responsive">
-                        <table  id="tablaitem" class="table">
-                          <thead>
-                            <tr>
-                                <th>N°</th>
-                                <th>TIPO</th>
-                                <th>NOMBRE</th>                                
-                                <th>ACCION</th>
-                            </tr>
-                          </thead>
-                          <tbody id="listado_Items_evento">
-                            
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6 grid-margin stretch-card">
-                  <div class="card">
-                    <div class="card-header cardmtmheader">
-                      <div class="row">
-                        <div class="col-md-10">LISTA DE INSCRITOS</div><br>
+                        <div class="col-md-10">LISTA DE ASISTENTES</div><br>
                         <div class="col-md-1">
                           <a id="exportarAsistentes" href="#" target="_blank" href="" style="color:#f39c12; font-size: 25px" data-toggle="tooltip" title="Exportar" class="btn btn-export btn-rounded btn-icon"><i class="mdi mdi-file-excel"></i></a>
                        </div>   
@@ -234,7 +203,7 @@
                                 <th>DNI</th>
                                 <th>APELLIDOS Y NOMBRES</th>
                                 <th>TIPO de ASISTENTE</th>
-                                <th>FECHA REGISTRO</th>
+                                <th>FECHA ASISTENCIA</th>
                             </tr>
                           </thead>
                           <tbody>

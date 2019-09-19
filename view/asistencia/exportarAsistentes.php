@@ -84,8 +84,10 @@ foreach ($listaIncritos as $inscritos):
 	}else{
 		$objSheet->getCell('N'.$num_celda)->setValue('FALTO');
 	}
+	$objSheet->getCell('O'.$num_celda)->setValue($inscritos->fecha_asistencia);
 	$num_celda=$num_celda+1;
 	$contador++;
+
 endforeach;
 
 $nombre_servicio = 'ListaAsistentes';
